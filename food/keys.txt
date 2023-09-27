@@ -1,0 +1,8 @@
+Client ID
+mJp1pok3b_4TnYa6OoZE5A
+
+
+API Key
+gpHo0LyxhyDwMBVLZJEr8R0eTsXadjTyHyxfytDtvhpOef6DRwII1u_qA3xOkPw2b9TCmvrIjfN6wnQzotNcqig9hkAmogPU4Cx-B6opuh8dydue54TEGTcLGfwTZXYx
+
+GET https://api.yelp.com/v3/businesses/search
