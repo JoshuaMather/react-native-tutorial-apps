@@ -11,7 +11,7 @@ export default () => {
                 params: {
                     limit: 50,
                     term: searhTerm,
-                    location: 'liverpool',
+                    location: 'san jose',
                 },
             });
             setResults(response.data.businesses);
