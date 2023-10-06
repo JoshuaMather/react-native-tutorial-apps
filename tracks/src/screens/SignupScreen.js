@@ -1,37 +1,30 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Text, Input, Button } from 'react-native-elements';
-import Spacer from '../components/Spacer';
+import { NavigationEvents } from 'react-navigation';
+import { Context as AuthContext } from '../context/AuthContext';
+import AuthForm from '../components/AuthForm';
+import NavLink from '../components/NavLink';
 
 const SignupScreen = ({ navigation }) => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const { state, signup, clearErrorMessage } = useContext(AuthContext);
 
     return (
         <View style={styles.container}>
-            <Spacer>
-                <Text h3>Sign Up for Tracker</Text>
-            </Spacer>
-            <Input
-                label="Email"
-                value={email}
-                onChangeText={(newEmail) => setEmail(newEmail)}
-                // or onChangeText={setEmail}
-                autoCapitalize="none"
-                autoCorrect={false}
+            <NavigationEvents
+                onWillFocus={clearErrorMessage}
+                onWillBlur={clearErrorMessage}
             />
-            <Spacer />
-            <Input
-                label="Password"
-                value={password}
-                onChangeText={setPassword}
-                autoCapitalize="none"
-                autoCorrect={false}
-                secureTextEntry
+            <AuthForm
+                headerText="Sign up for Tracker"
+                submitButtonText="Sign Up"
+                errorMessage={state.errorMessage}
+                // onSubmit={({ email, password }) => signup(email, password)}
+                onSubmit={signup}
             />
-            <Spacer>
-                <Button title="Sign Up" />
-            </Spacer>
+            <NavLink
+                routeName="Signin"
+                text="Already have an account? Sign in!"
+            />
         </View>
     );
 };
