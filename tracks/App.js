@@ -12,12 +12,13 @@ import { Provider as AuthProvider } from './src/context/AuthContext';
 import { setNavigator } from './src/navigationRef';
 import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { Provider as LocationProvider } from './src/context/LocationContext';
 
 const switchNavigator = createSwitchNavigator({
     ResolveAuth: ResolveAuthScreen,
     loginFlow: createStackNavigator({
-        Signup: SignupScreen,
         Signin: SigninScreen,
+        Signup: SignupScreen,
     }),
     mainFlow: createMaterialBottomTabNavigator({
         TrackListFlow: createStackNavigator({
@@ -34,13 +35,15 @@ const App = createAppContainer(switchNavigator);
 export default () => {
     return (
         <SafeAreaProvider>
-            <AuthProvider>
-                <App
-                    ref={(navigator) => {
-                        setNavigator(navigator);
-                    }}
-                />
-            </AuthProvider>
+            <LocationProvider>
+                <AuthProvider>
+                    <App
+                        ref={(navigator) => {
+                            setNavigator(navigator);
+                        }}
+                    />
+                </AuthProvider>
+            </LocationProvider>
         </SafeAreaProvider>
     );
 };
