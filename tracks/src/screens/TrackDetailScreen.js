@@ -9,22 +9,25 @@ const TrackDetailScreen = ({ navigation }) => {
 
     const track = state.find((t) => t._id === _id);
     const initialCoords = track.locations[0].coords;
+    console.log('TRACK', track);
+    console.log('INITIAL', initialCoords);
+    // LONGITUDE MISSING
 
     return (
         <>
             <Text style={{ fontSize: 48 }}>{track.name}</Text>
-            {/* <MapView
+            <MapView
                 style={styles.map}
                 initialRegion={{
-                    longitudeDelta: 0.01,
                     latitudeDelta: 0.01,
+                    longitudeDelta: 0.01,
                     ...initialCoords,
                 }}
             >
                 <Polyline
                     coordinates={track.locations.map((loc) => loc.coords)}
                 />
-            </MapView> */}
+            </MapView>
         </>
     );
 };
