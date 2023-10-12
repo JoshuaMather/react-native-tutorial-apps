@@ -9,6 +9,7 @@ const TrackForm = () => {
         state: { name, recording, locations },
         startRecording,
         stopRecording,
+        reset,
         changeName,
     } = useContext(LocationContext);
     const [saveTrack] = useSaveTrack();
@@ -32,6 +33,11 @@ const TrackForm = () => {
             <Spacer>
                 {!recording && locations.length ? (
                     <Button title="Save Recording" onPress={saveTrack} />
+                ) : null}
+            </Spacer>
+            <Spacer>
+                {!recording && locations.length ? (
+                    <Button title="Clear Track" onPress={reset} />
                 ) : null}
             </Spacer>
         </>
