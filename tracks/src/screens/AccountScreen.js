@@ -1,21 +1,16 @@
 import React, { useContext } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
-// import { SafeAreaView } from 'react-navigation';
+import { View, StyleSheet } from 'react-native';
+import { Text } from 'react-native-elements';
 import { Button } from 'react-native-elements';
 import Spacer from '../components/Spacer';
 import { Context as AuthContext } from '../context/AuthContext';
-import {
-    SafeAreaProvider,
-    useSafeAreaInsets,
-} from 'react-native-safe-area-context';
-import { FontAwesome } from '@expo/vector-icons';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const AccountScreen = () => {
     const { signout } = useContext(AuthContext);
     const insets = useSafeAreaInsets();
 
     return (
-        // <SafeAreaView forceInset={{ top: 'always' }}>
         <View
             style={{
                 paddingTop: insets.top,
@@ -24,20 +19,20 @@ const AccountScreen = () => {
                 paddingRight: insets.right,
             }}
         >
-            <Text style={{ fontSize: 48 }}>AccountScreen</Text>
+            <Text h2 style={styles.header}>
+                Account
+            </Text>
             <Spacer>
                 <Button title="Sign Out" onPress={signout} />
             </Spacer>
         </View>
-        // </SafeAreaView>
     );
 };
 
-// AccountScreen.navigationOptions = {
-//     title: 'Account',
-//     tabBarIcon: <FontAwesome name="gear" size={20} />,
-// };
-
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+    header: {
+        textAlign: 'center',
+    },
+});
 
 export default AccountScreen;

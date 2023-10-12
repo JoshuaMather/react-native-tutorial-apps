@@ -1,21 +1,30 @@
 import React, { useContext } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Context as TrackContext } from '../context/TrackContext';
 import MapView, { Polyline } from 'react-native-maps';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Text } from 'react-native-elements';
 
-const TrackDetailScreen = ({ navigation }) => {
+const TrackDetailScreen = ({ navigation, route }) => {
     const { state } = useContext(TrackContext);
-    const _id = navigation.getParam('_id');
+    const _id = route.params._id;
+    const insets = useSafeAreaInsets();
 
     const track = state.find((t) => t._id === _id);
     const initialCoords = track.locations[0].coords;
-    console.log('TRACK', track);
-    console.log('INITIAL', initialCoords);
-    // LONGITUDE MISSING
 
     return (
-        <>
-            <Text style={{ fontSize: 48 }}>{track.name}</Text>
+        <View
+            style={{
+                paddingTop: insets.top,
+                paddingBottom: insets.bottom,
+                paddingLeft: insets.left,
+                paddingRight: insets.right,
+            }}
+        >
+            <Text h2 style={styles.header}>
+                {track.name}
+            </Text>
             <MapView
                 style={styles.map}
                 initialRegion={{
@@ -28,13 +37,17 @@ const TrackDetailScreen = ({ navigation }) => {
                     coordinates={track.locations.map((loc) => loc.coords)}
                 />
             </MapView>
-        </>
+        </View>
     );
 };
 
 const styles = StyleSheet.create({
     map: {
         height: 300,
+    },
+    header: {
+        textAlign: 'center',
+        paddingBottom: 10,
     },
 });
 

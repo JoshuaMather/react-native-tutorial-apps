@@ -1,10 +1,11 @@
 import { useContext } from 'react';
 import { Context as TrackContext } from '../context/TrackContext';
 import { Context as LocationContext } from '../context/LocationContext';
-import { navigate } from '../navigationRef';
+import { useNavigation } from '@react-navigation/native';
 
 export default () => {
     const { createTrack } = useContext(TrackContext);
+    const navigation = useNavigation();
     const {
         state: { name, locations },
         reset,
@@ -13,7 +14,7 @@ export default () => {
     const saveTrack = async () => {
         await createTrack(name, locations);
         reset();
-        navigate('TrackList');
+        navigation.navigate('TrackList');
     };
 
     return [saveTrack];

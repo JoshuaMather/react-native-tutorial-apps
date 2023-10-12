@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { View, StyleSheet } from 'react-native';
-import { NavigationEvents } from 'react-navigation';
+import { StyleSheet, ScrollView } from 'react-native';
 import { Context as AuthContext } from '../context/AuthContext';
 import AuthForm from '../components/AuthForm';
 import NavLink from '../components/NavLink';
@@ -8,12 +7,23 @@ import NavLink from '../components/NavLink';
 const SignupScreen = ({ navigation }) => {
     const { state, signup, clearErrorMessage } = useContext(AuthContext);
 
+    useEffect(() => {
+        const unsubscribeFocus = navigation.addListener('focus', () => {
+            clearErrorMessage();
+        });
+
+        const unsubscribeBlur = navigation.addListener('blur', () => {
+            clearErrorMessage();
+        });
+
+        return () => {
+            unsubscribeFocus;
+            unsubscribeBlur;
+        };
+    }, [navigation]);
+
     return (
-        <View style={styles.container}>
-            <NavigationEvents
-                onWillFocus={clearErrorMessage}
-                onWillBlur={clearErrorMessage}
-            />
+        <ScrollView contentContainerStyle={styles.container}>
             <AuthForm
                 headerText="Sign up for Tracker"
                 submitButtonText="Sign Up"
@@ -25,21 +35,14 @@ const SignupScreen = ({ navigation }) => {
                 routeName="Signin"
                 text="Already have an account? Sign in!"
             />
-        </View>
+        </ScrollView>
     );
-};
-
-SignupScreen.navigationOptions = () => {
-    return {
-        headerShown: false,
-    };
 };
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flexGrow: 1,
         justifyContent: 'center',
-        marginBottom: 250,
     },
 });
 
