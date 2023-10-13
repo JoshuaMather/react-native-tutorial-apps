@@ -1,6 +1,7 @@
 import createDataContext from './createDataContext';
 import trackerApi from '../api/tracker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as SecureStore from 'expo-secure-store';
 
 const authReducer = (state, action) => {
     switch (action.type) {
@@ -18,7 +19,8 @@ const authReducer = (state, action) => {
 };
 
 const tryLocalSignin = (dispatch) => async () => {
-    const token = await AsyncStorage.getItem('token');
+    // const token = await AsyncStorage.getItem('token');
+    const token = await SecureStore.getItemAsync('token');
     if (token) {
         dispatch({ type: 'signin', payload: token });
     }
@@ -36,7 +38,10 @@ const signup =
                 email: email,
                 password: password,
             });
-            await AsyncStorage.setItem('token', response.data.token);
+            // await AsyncStorage.setItem('token', response.data.token);
+            await SecureStore.setItemAsync('token', response.data.token, {
+                keychainAccessible: SecureStore.WHEN_UNLOCKED,
+            });
             dispatch({ type: 'signin', payload: response.data.token });
         } catch (err) {
             dispatch({
@@ -54,7 +59,10 @@ const signin =
                 email,
                 password,
             });
-            await AsyncStorage.setItem('token', response.data.token);
+            // await AsyncStorage.setItem('token', response.data.token);
+            await SecureStore.setItemAsync('token', response.data.token, {
+                keychainAccessible: SecureStore.WHEN_UNLOCKED,
+            });
             dispatch({ type: 'signin', payload: response.data.token });
         } catch (err) {
             console.log(err);
@@ -66,7 +74,8 @@ const signin =
     };
 
 const signout = (dispatch) => async () => {
-    await AsyncStorage.removeItem('token');
+    // await AsyncStorage.removeItem('token');
+    await SecureStore.deleteItemAsync('token');
     dispatch({ type: 'signout' });
 };
 
