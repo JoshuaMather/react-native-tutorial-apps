@@ -4,7 +4,7 @@ import * as SecureStore from 'expo-secure-store';
 
 const instance = axios.create({
     baseURL:
-        'https://a806-2a02-c7c-2edd-6200-39cf-9267-3652-98db.ngrok-free.app',
+        'https://80fe-2a02-c7c-2edd-6200-3594-2aaa-8715-c44c.ngrok-free.app',
 });
 
 instance.interceptors.request.use(

@@ -12,6 +12,8 @@ import { Context as AuthContext } from '../context/AuthContext';
 import { navigationRef } from '../navigationRef';
 import { FontAwesome } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
+import NetworkBanner from '../components/NetworkBanner';
+import useNetwork from '../hooks/useNetwork';
 
 const Tab = createBottomTabNavigator();
 const AuthStack = createStackNavigator();
@@ -23,6 +25,8 @@ const ResolveAuthScreen = () => {
         tryLocalSignin,
     } = useContext(AuthContext);
 
+    useNetwork();
+
     useEffect(() => {
         tryLocalSignin();
     }, [token]);
@@ -33,7 +37,7 @@ const ResolveAuthScreen = () => {
                 initialRouteName="TrackList"
                 id="mainFlow"
                 screenOptions={{
-                    gestureEnabled: false,
+                    // gestureEnabled: false,
                     headerShown: false,
                 }}
             >
@@ -51,11 +55,12 @@ const ResolveAuthScreen = () => {
 
     return (
         <NavigationContainer ref={navigationRef}>
+            <NetworkBanner />
             {token ? (
                 <Tab.Navigator
                     id="tab"
                     screenOptions={{
-                        gestureEnabled: false,
+                        // gestureEnabled: false,
                         headerShown: false,
                         showIcon: true,
                     }}
@@ -96,7 +101,7 @@ const ResolveAuthScreen = () => {
                     initialRouteName="Signin"
                     id="loginFlow"
                     screenOptions={{
-                        gestureEnabled: false,
+                        // gestureEnabled: false,
                         headerShown: false,
                     }}
                 >
