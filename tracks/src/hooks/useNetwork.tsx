@@ -1,17 +1,23 @@
-import { useState, useEffect, useContext } from 'react';
+import { useEffect } from 'react';
 import NetInfo from '@react-native-community/netinfo';
-import { Context as NetworkContext } from '../context/NetworkContext';
+import { useDispatch } from 'react-redux';
+import { networkChanged } from '../store/slices/networkSlice';
 
 export default () => {
-    const { networkChanged } = useContext(NetworkContext);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const unsubscribeNet = NetInfo.addEventListener((state) => {
             console.log('Connection type', state.type);
             console.log('Is connected?', state.isConnected);
-            networkChanged(state.isConnected, state.type)
+            dispatch(
+                networkChanged({
+                    connected: state.isConnected,
+                    networkType: state.type,
+                })
+            );
         });
 
-        return unsubscribeNet
-    }, [])
-}
+        return unsubscribeNet;
+    }, []);
+};

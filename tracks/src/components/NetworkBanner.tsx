@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
-import { StyleSheet, View, Text, VirtualizedList } from 'react-native';
-import { Context as NetworkContext } from '../context/NetworkContext';
+import { StyleSheet, View, Text } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useSelector } from 'react-redux';
+import { RootState } from '../store/store';
 
 const NetworkBanner = () => {
-    const { state } = useContext(NetworkContext);
+    const networkState = useSelector((state: RootState) => state.network);
     const insets = useSafeAreaInsets();
 
     return (
@@ -17,9 +18,11 @@ const NetworkBanner = () => {
             }}
         >
             <View style={styles.banner}>
-                <Text style={styles.text}>Type: {state.networkType}</Text>
                 <Text style={styles.text}>
-                    Connected: {String(state.connected)}
+                    Type: {networkState.networkType}
+                </Text>
+                <Text style={styles.text}>
+                    Connected: {String(networkState.connected)}
                 </Text>
             </View>
         </View>
