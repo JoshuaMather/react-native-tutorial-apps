@@ -1,17 +1,21 @@
 import React, { useContext } from 'react';
 import { Button, Input } from 'react-native-elements';
 import Spacer from './Spacer';
-import { Context as LocationContext } from '../context/LocationContext';
+import { useDispatch, useSelector } from 'react-redux';
 import useSaveTrack from '../hooks/useSaveTrack';
+import {
+    changeName,
+    reset,
+    startRecording,
+    stopRecording,
+} from '../store/slices/locationSlice';
 
 const TrackForm = () => {
-    const {
-        state: { name, recording, locations },
-        startRecording,
-        stopRecording,
-        reset,
-        changeName,
-    } = useContext(LocationContext);
+    const { name, recording, locations } = useSelector(
+        (state) => state.location
+    );
+
+    const dispatch = useDispatch();
     const [saveTrack] = useSaveTrack();
 
     return (
@@ -20,14 +24,20 @@ const TrackForm = () => {
                 <Input
                     value={name}
                     placeholder="Enter Name"
-                    onChangeText={changeName}
+                    onChangeText={() => dispatch(changeName(name))}
                 />
             </Spacer>
             <Spacer>
                 {recording ? (
-                    <Button title="Stop" onPress={stopRecording} />
+                    <Button
+                        title="Stop"
+                        onPress={() => dispatch(stopRecording())}
+                    />
                 ) : (
-                    <Button title="Start Recording" onPress={startRecording} />
+                    <Button
+                        title="Start Recording"
+                        onPress={() => dispatch(startRecording())}
+                    />
                 )}
             </Spacer>
             <Spacer>
@@ -37,7 +47,10 @@ const TrackForm = () => {
             </Spacer>
             <Spacer>
                 {!recording && locations.length ? (
-                    <Button title="Clear Track" onPress={reset} />
+                    <Button
+                        title="Clear Track"
+                        onPress={() => dispatch(reset())}
+                    />
                 ) : null}
             </Spacer>
         </>

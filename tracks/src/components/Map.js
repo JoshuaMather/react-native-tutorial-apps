@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { StyleSheet, ActivityIndicator } from 'react-native';
 import MapView, { Polyline, Circle } from 'react-native-maps';
-import { Context as LocationContext } from '../context/LocationContext';
+import { useSelector } from 'react-redux';
 
 const Map = () => {
     // let points = [];
@@ -18,9 +18,9 @@ const Map = () => {
     //         });
     //     }
     // }
-    const {
-        state: { currentLocation, locations },
-    } = useContext(LocationContext);
+    const { currentLocation, locations } = useSelector(
+        (state) => state.location
+    );
 
     if (!currentLocation) {
         return <ActivityIndicator size="large" style={{ marginTop: 200 }} />;
