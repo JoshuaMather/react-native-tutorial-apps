@@ -24,7 +24,7 @@ const TrackForm = () => {
                 <Input
                     value={name}
                     placeholder="Enter Name"
-                    onChangeText={() => dispatch(changeName(name))}
+                    onChangeText={(newName) => dispatch(changeName(newName))}
                 />
             </Spacer>
             <Spacer>
