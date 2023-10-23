@@ -10,7 +10,6 @@ import { Text } from 'react-native-elements';
 import { ListItem } from 'react-native-elements';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 // import NetInfo from '@react-native-community/netinfo';
-import { StatusBar } from 'expo-status-bar';
 import { useFetchTracksQuery } from '../store/apis/trackApi';
 
 const TrackListScreen = ({ navigation }) => {
@@ -46,7 +45,6 @@ const TrackListScreen = ({ navigation }) => {
     } else {
         content = (
             <>
-                {/* <StatusBar style="dark" /> */}
                 <Text h2 style={styles.header}>
                     Track List
                 </Text>

@@ -8,6 +8,7 @@ import SignupScreen from './SignupScreen';
 import TrackCreateScreen from './TrackCreateScreen';
 import TrackDetailScreen from './TrackDetailScreen';
 import TrackListScreen from './TrackListScreen';
+import TestFormScreen from './TestFormScreen';
 import { navigationRef } from '../navigationRef';
 import { FontAwesome } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
@@ -19,6 +20,7 @@ import { tryLocalSignIn } from '../store/slices/authSlice';
 const Tab = createBottomTabNavigator();
 const AuthStack = createStackNavigator();
 const TrackListStack = createStackNavigator();
+const AccountStack = createStackNavigator();
 
 const ResolveAuthScreen = () => {
     const dispatch = useDispatch();
@@ -49,6 +51,25 @@ const ResolveAuthScreen = () => {
                     component={TrackDetailScreen}
                 />
             </TrackListStack.Navigator>
+        );
+    };
+
+    const AccountStackScreen = () => {
+        return (
+            <AccountStack.Navigator
+                initialRouteName="Account"
+                id="accountFlow"
+                screenOptions={{
+                    // gestureEnabled: false,
+                    headerShown: false,
+                }}
+            >
+                <AccountStack.Screen name="Account" component={AccountScreen} />
+                <AccountStack.Screen
+                    name="TestForm"
+                    component={TestFormScreen}
+                />
+            </AccountStack.Navigator>
         );
     };
 
@@ -85,8 +106,8 @@ const ResolveAuthScreen = () => {
                         }}
                     />
                     <Tab.Screen
-                        name="Account"
-                        component={AccountScreen}
+                        name="AccountMain"
+                        component={AccountStackScreen}
                         options={{
                             title: 'Account',
                             tabBarIcon: () => {

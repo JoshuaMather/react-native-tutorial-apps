@@ -7,7 +7,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useDispatch } from 'react-redux';
 import { signout } from '../store/slices/authSlice';
 
-const AccountScreen = () => {
+const AccountScreen = ({ navigation }) => {
     const dispatch = useDispatch();
     const insets = useSafeAreaInsets();
 
@@ -23,6 +23,12 @@ const AccountScreen = () => {
             <Text h2 style={styles.header}>
                 Account
             </Text>
+            <Spacer>
+                <Button
+                    title="Test Form"
+                    onPress={() => navigation.navigate('TestForm')}
+                />
+            </Spacer>
             <Spacer>
                 <Button title="Sign Out" onPress={() => dispatch(signout())} />
             </Spacer>
