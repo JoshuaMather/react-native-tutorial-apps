@@ -1,19 +1,23 @@
 import React, { useContext, useEffect } from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
+import { StyleSheet, ScrollView, Text } from 'react-native';
 import AuthForm from '../components/AuthForm';
 import NavLink from '../components/NavLink';
-import { Context } from '../context/AuthContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearErrorMessage } from '../store/slices/authSlice';
+import { useSigninMutation } from '../store/apis/authApi';
 
 const SigninScreen = ({ navigation }) => {
-    const { state, signin, clearErrorMessage } = useContext(Context);
+    const dispatch = useDispatch();
+    const { errorMessage } = useSelector((state) => state.auth);
+    const [signin] = useSigninMutation();
 
     useEffect(() => {
         const unsubscribeFocus = navigation.addListener('focus', () => {
-            clearErrorMessage();
+            dispatch(clearErrorMessage());
         });
 
         const unsubscribeBlur = navigation.addListener('blur', () => {
-            clearErrorMessage();
+            dispatch(clearErrorMessage());
         });
 
         return () => {
@@ -24,10 +28,11 @@ const SigninScreen = ({ navigation }) => {
 
     return (
         <ScrollView contentContainerStyle={styles.container}>
+            {/* <Text>{process.env.EXPO_PUBLIC_BASE_URL}</Text> */}
             <AuthForm
                 headerText="Sign in to your account"
                 submitButtonText="Sign In"
-                errorMessage={state.errorMessage}
+                errorMessage={errorMessage}
                 onSubmit={signin}
             />
             <NavLink

@@ -8,27 +8,26 @@ import SignupScreen from './SignupScreen';
 import TrackCreateScreen from './TrackCreateScreen';
 import TrackDetailScreen from './TrackDetailScreen';
 import TrackListScreen from './TrackListScreen';
-import { Context as AuthContext } from '../context/AuthContext';
 import { navigationRef } from '../navigationRef';
 import { FontAwesome } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import NetworkBanner from '../components/NetworkBanner';
 import useNetwork from '../hooks/useNetwork';
+import { useDispatch, useSelector } from 'react-redux';
+import { tryLocalSignIn } from '../store/slices/authSlice';
 
 const Tab = createBottomTabNavigator();
 const AuthStack = createStackNavigator();
 const TrackListStack = createStackNavigator();
 
 const ResolveAuthScreen = () => {
-    const {
-        state: { token },
-        tryLocalSignin,
-    } = useContext(AuthContext);
+    const dispatch = useDispatch();
+    const { token } = useSelector((state) => state.auth);
 
     useNetwork();
 
     useEffect(() => {
-        tryLocalSignin();
+        dispatch(tryLocalSignIn());
     }, [token]);
 
     const TrackListStackScreen = () => {

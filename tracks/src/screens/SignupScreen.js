@@ -1,19 +1,23 @@
 import React, { useContext, useEffect } from 'react';
 import { StyleSheet, ScrollView } from 'react-native';
-import { Context as AuthContext } from '../context/AuthContext';
 import AuthForm from '../components/AuthForm';
 import NavLink from '../components/NavLink';
+import { useDispatch, useSelector } from 'react-redux';
+import { useSignupMutation } from '../store/apis/authApi';
+import { clearErrorMessage } from '../store/slices/authSlice';
 
 const SignupScreen = ({ navigation }) => {
-    const { state, signup, clearErrorMessage } = useContext(AuthContext);
+    const dispatch = useDispatch();
+    const { errorMessage } = useSelector((state) => state.auth);
+    const [signup] = useSignupMutation();
 
     useEffect(() => {
         const unsubscribeFocus = navigation.addListener('focus', () => {
-            clearErrorMessage();
+            dispatch(clearErrorMessage());
         });
 
         const unsubscribeBlur = navigation.addListener('blur', () => {
-            clearErrorMessage();
+            dispatch(clearErrorMessage());
         });
 
         return () => {
@@ -27,7 +31,7 @@ const SignupScreen = ({ navigation }) => {
             <AuthForm
                 headerText="Sign up for Tracker"
                 submitButtonText="Sign Up"
-                errorMessage={state.errorMessage}
+                errorMessage={errorMessage}
                 // onSubmit={({ email, password }) => signup(email, password)}
                 onSubmit={signup}
             />

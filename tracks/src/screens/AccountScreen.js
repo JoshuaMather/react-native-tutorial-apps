@@ -3,11 +3,12 @@ import { View, StyleSheet } from 'react-native';
 import { Text } from 'react-native-elements';
 import { Button } from 'react-native-elements';
 import Spacer from '../components/Spacer';
-import { Context as AuthContext } from '../context/AuthContext';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useDispatch } from 'react-redux';
+import { signout } from '../store/slices/authSlice';
 
 const AccountScreen = () => {
-    const { signout } = useContext(AuthContext);
+    const dispatch = useDispatch();
     const insets = useSafeAreaInsets();
 
     return (
@@ -23,7 +24,7 @@ const AccountScreen = () => {
                 Account
             </Text>
             <Spacer>
-                <Button title="Sign Out" onPress={signout} />
+                <Button title="Sign Out" onPress={() => dispatch(signout())} />
             </Spacer>
         </View>
     );

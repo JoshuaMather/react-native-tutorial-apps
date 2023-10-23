@@ -14,13 +14,13 @@ const trackApi = api.injectEndpoints({
             }),
             createTrack: builder.mutation({
                 invalidatesTags: ['Tracks'],
-                query: (data) => {
+                query: ({ name, locations }) => {
                     return {
                         method: 'POST',
                         url: '/tracks',
                         body: {
-                            name: data.name,
-                            locations: data.locations,
+                            name: name,
+                            locations: locations,
                         },
                     };
                 },
