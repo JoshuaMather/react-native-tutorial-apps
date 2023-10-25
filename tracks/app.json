@@ -38,6 +38,14 @@
     },
     "updates": {
       "url": "https://u.expo.dev/ab6e85ad-f995-483b-9ced-fe01c0ec9aee"
-    }
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos to let you share them with your friends."
+        }
+      ]
+    ]
   }
 }
