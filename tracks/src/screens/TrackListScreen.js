@@ -5,6 +5,8 @@ import {
     TouchableOpacity,
     View,
     ActivityIndicator,
+    RefreshControl,
+    ScrollView,
 } from 'react-native';
 import { Text } from 'react-native-elements';
 import { ListItem } from 'react-native-elements';
@@ -17,6 +19,10 @@ const TrackListScreen = ({ navigation }) => {
     const insets = useSafeAreaInsets();
     // const [type, setType] = useState(NetInfo.type);
     // const [isConnected, setIsConnected] = useState(NetInfo.isConnected);
+
+    const onRefresh = React.useCallback(() => {
+        refetch();
+    }, []);
 
     useEffect(() => {
         const unsubscribe = navigation.addListener('focus', () => {
@@ -49,6 +55,12 @@ const TrackListScreen = ({ navigation }) => {
                     Track List
                 </Text>
                 <FlatList
+                    refreshControl={
+                        <RefreshControl
+                            refreshing={isFetching}
+                            onRefresh={onRefresh}
+                        />
+                    }
                     data={data}
                     keyExtractor={(item) => item._id}
                     renderItem={({ item }) => {
