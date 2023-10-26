@@ -50,7 +50,7 @@ const TrackListScreen = ({ navigation }) => {
         content = <Text>Error fetching track</Text>;
     } else {
         content = (
-            <>
+            <View className="flex-1">
                 <Text h2 style={styles.header}>
                     Track List
                 </Text>
@@ -84,7 +84,7 @@ const TrackListScreen = ({ navigation }) => {
                         );
                     }}
                 />
-            </>
+            </View>
         );
     }
 
@@ -96,6 +96,7 @@ const TrackListScreen = ({ navigation }) => {
                 paddingLeft: insets.left,
                 paddingRight: insets.right,
             }}
+            className="flex-1"
         >
             {content}
         </View>
