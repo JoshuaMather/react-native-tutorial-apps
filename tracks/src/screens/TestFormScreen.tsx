@@ -24,12 +24,14 @@ import FormImage from '../components/FormImage';
 import BottomSheet, { BottomSheetBackdrop } from '@gorhom/bottom-sheet';
 import * as FileSystem from 'expo-file-system';
 import FormPicker from '../components/FormPicker';
+import Checkbox from 'expo-checkbox';
 
 type Fields = {
     test: string;
     requiredTest: string;
     imageUrl: string;
     colour: string;
+    checked: boolean;
 };
 
 const TestFormScreen = () => {
@@ -39,6 +41,7 @@ const TestFormScreen = () => {
         watch,
         control,
         setValue,
+        getValues,
         formState: { errors, isLoading },
     } = useForm<Fields>();
 
@@ -62,6 +65,10 @@ const TestFormScreen = () => {
     const setImageUrlValue = (url) => {
         console.log(url);
         setValue('imageUrl', url);
+    };
+
+    const checkBox = () => {
+        setValue('checked', !getValues('checked'));
     };
 
     const childImageRef = useRef(null);
@@ -182,6 +189,36 @@ const TestFormScreen = () => {
                         <View className="pb-5">
                             <FormPicker control={control} />
                         </View>
+                        <Controller
+                            control={control}
+                            rules={{ required: true }}
+                            render={({
+                                field: { onChange, onBlur, value },
+                            }) => (
+                                <View className="pb-5">
+                                    <Text className="font-bold text-xl pb-2">
+                                        Required Checked
+                                        <Text
+                                            className={`${styles.red} font-extrabold`}
+                                        >
+                                            *
+                                        </Text>
+                                    </Text>
+                                    <TouchableOpacity
+                                        className="flex-row justify-between px-3"
+                                        activeOpacity={1}
+                                        onPress={checkBox}
+                                    >
+                                        <Text className="text-lg">Agree</Text>
+                                        <Checkbox
+                                            value={value}
+                                            onValueChange={onChange}
+                                        />
+                                    </TouchableOpacity>
+                                </View>
+                            )}
+                            name="checked"
+                        />
                         <Button
                             title="Submit"
                             onPress={handleSubmit(onSubmit, onError)}
