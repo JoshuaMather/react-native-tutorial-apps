@@ -23,11 +23,13 @@ import { Input } from 'react-native-elements';
 import FormImage from '../components/FormImage';
 import BottomSheet, { BottomSheetBackdrop } from '@gorhom/bottom-sheet';
 import * as FileSystem from 'expo-file-system';
+import FormPicker from '../components/FormPicker';
 
 type Fields = {
     test: string;
     requiredTest: string;
     imageUrl: string;
+    colour: string;
 };
 
 const TestFormScreen = () => {
@@ -42,10 +44,15 @@ const TestFormScreen = () => {
 
     const onSubmit = async (data) => {
         console.log(data);
-        const fileBase64 = await FileSystem.readAsStringAsync(data.imageUrl, {
-            encoding: 'base64',
-        });
-        console.log(fileBase64);
+        if (data.imageUrl) {
+            const fileBase64 = await FileSystem.readAsStringAsync(
+                data.imageUrl,
+                {
+                    encoding: 'base64',
+                }
+            );
+            console.log(fileBase64);
+        }
     };
 
     const onError = (errors: FieldErrors<Fields>) =>
@@ -171,6 +178,9 @@ const TestFormScreen = () => {
                                 watch={watch}
                                 setImageUrlValue={setImageUrlValue}
                             />
+                        </View>
+                        <View className="pb-5">
+                            <FormPicker control={control} />
                         </View>
                         <Button
                             title="Submit"

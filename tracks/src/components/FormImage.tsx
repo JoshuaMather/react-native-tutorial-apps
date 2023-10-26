@@ -7,11 +7,11 @@ import React, {
 import { View, Text, TouchableOpacity, TextInput, Button } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { Image } from 'expo-image';
-import { useFormContext, Controller, useForm } from 'react-hook-form';
+import { Controller } from 'react-hook-form';
 
 const FormImage = ({ toggleSheet, control, watch, setImageUrlValue }, ref) => {
     const [image, setImage] = useState<string>(null);
-    const { register, setValue } = useFormContext();
+    // const { register, setValue } = useFormContext();
     // const { setValue } = useForm();
 
     useEffect(() => {
