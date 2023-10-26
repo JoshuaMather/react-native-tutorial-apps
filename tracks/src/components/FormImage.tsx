@@ -88,18 +88,16 @@ const FormImage = ({ toggleSheet, control, watch, setImageUrlValue }, ref) => {
                 control={control}
                 render={({ field: { onChange, onBlur, value } }) => (
                     <TextInput
-                        // className="h-0 w-0"
+                        className="h-0 w-0"
                         autoFocus={true}
                         multiline
                         onBlur={onBlur}
                         onChange={onChange}
                         value={value}
-                        // {...register('imageUrl')}
                     />
                 )}
                 name="imageUrl"
             />
-            <Button title="press" onPress={() => setImageUrlValue('a')} />
         </View>
     );
 };

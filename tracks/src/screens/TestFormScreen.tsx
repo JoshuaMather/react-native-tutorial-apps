@@ -22,6 +22,7 @@ import { TextInput as TextInputPaper } from 'react-native-paper';
 import { Input } from 'react-native-elements';
 import FormImage from '../components/FormImage';
 import BottomSheet, { BottomSheetBackdrop } from '@gorhom/bottom-sheet';
+import * as FileSystem from 'expo-file-system';
 
 type Fields = {
     test: string;
@@ -38,7 +39,15 @@ const TestFormScreen = () => {
         setValue,
         formState: { errors, isLoading },
     } = useForm<Fields>();
-    const onSubmit = (data) => console.log(data);
+
+    const onSubmit = async (data) => {
+        console.log(data);
+        const fileBase64 = await FileSystem.readAsStringAsync(data.imageUrl, {
+            encoding: 'base64',
+        });
+        console.log(fileBase64);
+    };
+
     const onError = (errors: FieldErrors<Fields>) =>
         console.log('Errors: ', errors);
     const methods = useForm();
