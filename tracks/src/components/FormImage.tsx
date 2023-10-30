@@ -15,7 +15,7 @@ const FormImage = ({ toggleSheet, control, watch, setImageUrlValue }, ref) => {
     // const { setValue } = useForm();
 
     useEffect(() => {
-        console.log(image);
+        console.log('image', image);
         setImageUrlValue(image);
     }, [image]);
 

@@ -25,6 +25,7 @@ import BottomSheet, { BottomSheetBackdrop } from '@gorhom/bottom-sheet';
 import * as FileSystem from 'expo-file-system';
 import FormPicker from '../components/FormPicker';
 import Checkbox from 'expo-checkbox';
+import FormSignature from '../components/FormSignature';
 
 type Fields = {
     test: string;
@@ -32,6 +33,7 @@ type Fields = {
     imageUrl: string;
     colour: string;
     checked: boolean;
+    signature: string;
 };
 
 const TestFormScreen = () => {
@@ -46,7 +48,7 @@ const TestFormScreen = () => {
     } = useForm<Fields>();
 
     const onSubmit = async (data) => {
-        console.log(data);
+        console.log('data', data);
         if (data.imageUrl) {
             const fileBase64 = await FileSystem.readAsStringAsync(
                 data.imageUrl,
@@ -54,7 +56,7 @@ const TestFormScreen = () => {
                     encoding: 'base64',
                 }
             );
-            console.log(fileBase64);
+            console.log('base64', fileBase64);
         }
     };
 
@@ -63,7 +65,7 @@ const TestFormScreen = () => {
     const methods = useForm();
 
     const setImageUrlValue = (url) => {
-        console.log(url);
+        console.log('url', url);
         setValue('imageUrl', url);
     };
 
@@ -215,10 +217,22 @@ const TestFormScreen = () => {
                                             onValueChange={onChange}
                                         />
                                     </TouchableOpacity>
+                                    {errors.checked && (
+                                        <Text className={`${styles.red}`}>
+                                            Required
+                                        </Text>
+                                    )}
                                 </View>
                             )}
                             name="checked"
                         />
+                        <View className="pb-5">
+                            <FormSignature
+                                control={control}
+                                getValues={getValues}
+                                errors={errors}
+                            />
+                        </View>
                         <Button
                             title="Submit"
                             onPress={handleSubmit(onSubmit, onError)}

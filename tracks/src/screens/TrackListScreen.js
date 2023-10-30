@@ -103,6 +103,8 @@ const TrackListScreen = ({ navigation }) => {
     );
 };
 
+const style = 'body { opacity: 0.99; }';
+
 const styles = StyleSheet.create({
     header: {
         textAlign: 'center',

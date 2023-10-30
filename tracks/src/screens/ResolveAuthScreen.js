@@ -68,6 +68,7 @@ const ResolveAuthScreen = () => {
                 <AccountStack.Screen
                     name="TestForm"
                     component={TestFormScreen}
+                    // options={{ animationEnabled: false }}
                 />
             </AccountStack.Navigator>
         );
