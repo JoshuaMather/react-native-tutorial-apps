@@ -26,6 +26,7 @@ import * as FileSystem from 'expo-file-system';
 import FormPicker from '../components/FormPicker';
 import Checkbox from 'expo-checkbox';
 import FormSignature from '../components/FormSignature';
+import FormBarcodeScanner from '../components/FormBarcodeScanner';
 
 type Fields = {
     test: string;
@@ -34,6 +35,7 @@ type Fields = {
     colour: string;
     checked: boolean;
     signature: string;
+    barcode: any;
 };
 
 const TestFormScreen = () => {
@@ -233,8 +235,12 @@ const TestFormScreen = () => {
                                 errors={errors}
                             />
                         </View>
+                        <View className="pb-5">
+                            <FormBarcodeScanner control={control} />
+                        </View>
                         <Button
                             title="Submit"
+                            color="#1bc900"
                             onPress={handleSubmit(onSubmit, onError)}
                         />
                     </Spacer>

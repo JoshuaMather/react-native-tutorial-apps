@@ -29,7 +29,7 @@ const FormSignature = ({ control, getValues, errors }) => {
     return (
         <Controller
             control={control}
-            rules={{ required: true }}
+            // rules={{ required: true }}
             render={({ field: { onChange, onBlur, value } }) => (
                 <View>
                     <Text className="font-bold text-xl pb-2">
