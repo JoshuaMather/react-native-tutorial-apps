@@ -27,6 +27,7 @@ import FormPicker from '../components/FormPicker';
 import Checkbox from 'expo-checkbox';
 import FormSignature from '../components/FormSignature';
 import FormBarcodeScanner from '../components/FormBarcodeScanner';
+import FormDateTimePicker from '../components/FormDateTimePicker';
 
 type Fields = {
     test: string;
@@ -35,7 +36,12 @@ type Fields = {
     colour: string;
     checked: boolean;
     signature: string;
-    barcode: any;
+    barcode: {
+        type: string;
+        data: string;
+    };
+    date: string;
+    time: string;
 };
 
 const TestFormScreen = () => {
@@ -237,6 +243,9 @@ const TestFormScreen = () => {
                         </View>
                         <View className="pb-5">
                             <FormBarcodeScanner control={control} />
+                        </View>
+                        <View className="pb-5">
+                            <FormDateTimePicker control={control} />
                         </View>
                         <Button
                             title="Submit"
