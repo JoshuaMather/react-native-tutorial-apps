@@ -18,7 +18,7 @@ import {
     FormProvider,
 } from 'react-hook-form';
 import Spacer from '../components/Spacer';
-import { TextInput as TextInputPaper } from 'react-native-paper';
+import { TextInput as TextInputPaper, RadioButton } from 'react-native-paper';
 import { Input } from 'react-native-elements';
 import FormImage from '../components/FormImage';
 import BottomSheet, { BottomSheetBackdrop } from '@gorhom/bottom-sheet';
@@ -42,6 +42,7 @@ type Fields = {
     };
     date: string;
     time: string;
+    radio: string;
 };
 
 const TestFormScreen = () => {
@@ -247,6 +248,61 @@ const TestFormScreen = () => {
                         <View className="pb-5">
                             <FormDateTimePicker control={control} />
                         </View>
+
+                        <Controller
+                            control={control}
+                            rules={{ maxLength: 20, minLength: 3 }}
+                            render={({
+                                field: { onChange, onBlur, value },
+                            }) => (
+                                <View className="pb-5">
+                                    <Text className="font-bold text-xl">
+                                        Radio Buttons
+                                    </Text>
+                                    <RadioButton.Group
+                                        onValueChange={(value) =>
+                                            onChange(value)
+                                        }
+                                        value={value}
+                                    >
+                                        <View>
+                                            <RadioButton.Item
+                                                value="One"
+                                                status={
+                                                    value === 'One'
+                                                        ? 'checked'
+                                                        : 'unchecked'
+                                                }
+                                                color="red"
+                                                label="One"
+                                            />
+                                        </View>
+                                        <RadioButton.Item
+                                            value="Two"
+                                            status={
+                                                value === 'Two'
+                                                    ? 'checked'
+                                                    : 'unchecked'
+                                            }
+                                            color="blue"
+                                            label="Two"
+                                        />
+                                        <RadioButton.Item
+                                            value="Three"
+                                            status={
+                                                value === 'Three'
+                                                    ? 'checked'
+                                                    : 'unchecked'
+                                            }
+                                            color="green"
+                                            label="Three"
+                                        />
+                                    </RadioButton.Group>
+                                </View>
+                            )}
+                            name="radio"
+                        />
+
                         <Button
                             title="Submit"
                             color="#1bc900"
