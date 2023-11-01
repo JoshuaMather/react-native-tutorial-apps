@@ -20,14 +20,15 @@ import {
 import Spacer from '../components/Spacer';
 import { TextInput as TextInputPaper, RadioButton } from 'react-native-paper';
 import { Input } from 'react-native-elements';
-import FormImage from '../components/FormImage';
+import FormImage from '../components/form/FormImage';
 import BottomSheet, { BottomSheetBackdrop } from '@gorhom/bottom-sheet';
 import * as FileSystem from 'expo-file-system';
-import FormPicker from '../components/FormPicker';
+import FormPicker from '../components/form/FormPicker';
 import Checkbox from 'expo-checkbox';
-import FormSignature from '../components/FormSignature';
-import FormBarcodeScanner from '../components/FormBarcodeScanner';
-import FormDateTimePicker from '../components/FormDateTimePicker';
+import FormSignature from '../components/form/FormSignature';
+import FormBarcodeScanner from '../components/form/FormBarcodeScanner';
+import FormDateTimePicker from '../components/form/FormDateTimePicker';
+import FormMultiSelect from '../components/form/FormMultiSelect';
 
 type Fields = {
     test: string;
@@ -43,6 +44,7 @@ type Fields = {
     date: string;
     time: string;
     radio: string;
+    multiSelect: string[];
 };
 
 const TestFormScreen = () => {
@@ -112,7 +114,7 @@ const TestFormScreen = () => {
 
     return (
         <View className="flex-1">
-            <Text className="text-center text-4xl pt-5 font-bold">
+            <Text className="text-center text-4xl pt-5 font-bold border-b-2 border-[#03fcf4]">
                 Test Form
             </Text>
             <ScrollView>
@@ -302,6 +304,10 @@ const TestFormScreen = () => {
                             )}
                             name="radio"
                         />
+
+                        <View className="pb-5">
+                            <FormMultiSelect control={control} />
+                        </View>
 
                         <Button
                             title="Submit"
