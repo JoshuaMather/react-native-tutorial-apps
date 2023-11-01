@@ -29,6 +29,8 @@ import FormSignature from '../components/form/FormSignature';
 import FormBarcodeScanner from '../components/form/FormBarcodeScanner';
 import FormDateTimePicker from '../components/form/FormDateTimePicker';
 import FormMultiSelect from '../components/form/FormMultiSelect';
+import FormDocumentPicker from '../components/form/FormDocumentPicker';
+import { DocumentPickerResult } from 'expo-document-picker';
 
 type Fields = {
     test: string;
@@ -45,6 +47,16 @@ type Fields = {
     time: string;
     radio: string;
     multiSelect: string[];
+    // document: {
+    //     assets: {
+    //         mimeType: string;
+    //         name: string;
+    //         size: number;
+    //         uri: string;
+    //     };
+    //     canceled: boolean;
+    // };
+    document: DocumentPickerResult;
 };
 
 const TestFormScreen = () => {
@@ -307,6 +319,10 @@ const TestFormScreen = () => {
 
                         <View className="pb-5">
                             <FormMultiSelect control={control} />
+                        </View>
+
+                        <View className="pb-5">
+                            <FormDocumentPicker control={control} />
                         </View>
 
                         <Button
