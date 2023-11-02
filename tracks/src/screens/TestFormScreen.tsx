@@ -31,6 +31,8 @@ import FormDateTimePicker from '../components/form/FormDateTimePicker';
 import FormMultiSelect from '../components/form/FormMultiSelect';
 import FormDocumentPicker from '../components/form/FormDocumentPicker';
 import { DocumentPickerResult } from 'expo-document-picker';
+import * as Yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 type Fields = {
     test: string;
@@ -59,7 +61,97 @@ type Fields = {
     document: DocumentPickerResult;
 };
 
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+
+const schema = Yup.object().shape({
+    test: Yup.string().label('test').trim().min(3).max(20),
+    requiredTest: Yup.string()
+        .label('requiredTest')
+        .trim()
+        .required('Required'),
+    imageUrl: Yup.string().label('imageUrl').nullable(),
+    colour: Yup.string()
+        .label('colour')
+        .trim()
+        .oneOf(['Red', 'Green', 'Blue', 'Yellow', 'Purple', 'Orange']),
+    checked: Yup.boolean().label('checked').required('Required'),
+    signature: Yup.string().label('signature'),
+    barcode: Yup.object().shape({
+        type: Yup.string().label('type'),
+        data: Yup.string().label('data'),
+    }),
+    date: Yup.date().label('date').min(today, 'Date cannot be in the past'),
+    time: Yup.date()
+        .label('time')
+        .min(new Date(), 'Time cannot be in the past'),
+    radio: Yup.string()
+        .label('radio')
+        .trim()
+        .oneOf(['One', 'Two', 'Three'], 'Must be one of: One, Two, Three'),
+    multiSelect: Yup.array().of(Yup.string()).label('multiSelect'),
+    document: Yup.mixed<DocumentPickerResult>().test(
+        'type',
+        'Invalid type for document result',
+        (value) => isDocumentPickerResult(value)
+    ),
+    // document: Yup.object().shape({
+    //     assets: Yup.array().of(
+    //         Yup.object({
+    //             mimeType: Yup.string(),
+    //             name: Yup.string(),
+    //             size: Yup.number(),
+    //             uri: Yup.string(),
+    //         })
+    //     ),
+    //     canceled: Yup.boolean(),
+    // }),
+});
+
+const isDocumentPickerResult = (val: any): val is DocumentPickerResult => {
+    if (Object.keys(val).length == 0) {
+        return true;
+    }
+    return (
+        val.assets &&
+        typeof val?.assets[0] === 'object' &&
+        (val.canceled === false || val.canceled === true)
+    );
+};
+
+const useYupValidationResolver = (validationSchema) =>
+    useCallback(
+        async (data) => {
+            try {
+                const values = await validationSchema.validate(data, {
+                    abortEarly: false,
+                });
+
+                return {
+                    values,
+                    errors: {},
+                };
+            } catch (errors) {
+                return {
+                    values: {},
+                    errors: errors.inner.reduce(
+                        (allErrors, currentError) => ({
+                            ...allErrors,
+                            [currentError.path]: {
+                                type: currentError.type ?? 'validation',
+                                message: currentError.message,
+                            },
+                        }),
+                        {}
+                    ),
+                };
+            }
+        },
+        [validationSchema]
+    );
+
 const TestFormScreen = () => {
+    const resolver = useYupValidationResolver(schema);
     const {
         register,
         handleSubmit,
@@ -68,9 +160,9 @@ const TestFormScreen = () => {
         setValue,
         getValues,
         formState: { errors, isLoading },
-    } = useForm<Fields>();
+    } = useForm<Fields>({ resolver });
 
-    const onSubmit = async (data) => {
+    const onSubmit: SubmitHandler<Fields> = async (data: Fields) => {
         console.log('data', data);
         if (data.imageUrl) {
             const fileBase64 = await FileSystem.readAsStringAsync(
@@ -79,7 +171,7 @@ const TestFormScreen = () => {
                     encoding: 'base64',
                 }
             );
-            console.log('base64', fileBase64);
+            // console.log('base64', fileBase64);
         }
     };
 
@@ -162,8 +254,7 @@ const TestFormScreen = () => {
                                     />
                                     {errors.test && (
                                         <Text className={`${styles.red}`}>
-                                            Must be at least 3 and less than 20
-                                            characters
+                                            {errors.test.message}
                                         </Text>
                                     )}
                                 </View>
@@ -195,7 +286,7 @@ const TestFormScreen = () => {
                                     />
                                     {errors.requiredTest && (
                                         <Text className={`${styles.red}`}>
-                                            Required
+                                            {errors.requiredTest.message}
                                         </Text>
                                     )}
                                 </View>
@@ -209,10 +300,11 @@ const TestFormScreen = () => {
                                 control={control}
                                 watch={watch}
                                 setImageUrlValue={setImageUrlValue}
+                                errors={errors}
                             />
                         </View>
                         <View className="pb-5">
-                            <FormPicker control={control} />
+                            <FormPicker control={control} errors={errors} />
                         </View>
                         <Controller
                             control={control}
@@ -242,7 +334,7 @@ const TestFormScreen = () => {
                                     </TouchableOpacity>
                                     {errors.checked && (
                                         <Text className={`${styles.red}`}>
-                                            Required
+                                            {errors.checked.message}
                                         </Text>
                                     )}
                                 </View>
@@ -257,10 +349,16 @@ const TestFormScreen = () => {
                             />
                         </View>
                         <View className="pb-5">
-                            <FormBarcodeScanner control={control} />
+                            <FormBarcodeScanner
+                                control={control}
+                                errors={errors}
+                            />
                         </View>
                         <View className="pb-5">
-                            <FormDateTimePicker control={control} />
+                            <FormDateTimePicker
+                                control={control}
+                                errors={errors}
+                            />
                         </View>
 
                         <Controller
@@ -312,17 +410,29 @@ const TestFormScreen = () => {
                                             label="Three"
                                         />
                                     </RadioButton.Group>
+                                    {errors.radio && (
+                                        <Text className={`${styles.red}`}>
+                                            {errors.radio.message}
+                                        </Text>
+                                    )}
                                 </View>
                             )}
                             name="radio"
                         />
 
                         <View className="pb-5">
-                            <FormMultiSelect control={control} />
+                            <FormMultiSelect
+                                control={control}
+                                errors={errors}
+                            />
                         </View>
 
                         <View className="pb-5">
-                            <FormDocumentPicker control={control} />
+                            <FormDocumentPicker
+                                control={control}
+                                setValue={setValue}
+                                errors={errors}
+                            />
                         </View>
 
                         <Button

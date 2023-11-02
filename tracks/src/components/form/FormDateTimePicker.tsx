@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Controller } from 'react-hook-form';
 
-const FormDateTimePicker = ({ control }) => {
+const FormDateTimePicker = ({ control, errors }) => {
     const [showDate, setShowDate] = useState(false);
     const [showTime, setShowTime] = useState(false);
 
@@ -48,6 +48,11 @@ const FormDateTimePicker = ({ control }) => {
                         <Text className="text-center text-xl">
                             Date: {value.toLocaleDateString()}
                         </Text>
+                        {errors.date && (
+                            <Text className={`${styles.red}`}>
+                                {errors.date.message}
+                            </Text>
+                        )}
                     </View>
                 )}
                 name="date"
@@ -71,6 +76,11 @@ const FormDateTimePicker = ({ control }) => {
                         <Text className="text-center text-xl">
                             Time: {value.toLocaleTimeString()}
                         </Text>
+                        {errors.time && (
+                            <Text className={`${styles.red}`}>
+                                {errors.time.message}
+                            </Text>
+                        )}
                     </View>
                 )}
                 name="time"
@@ -80,3 +90,7 @@ const FormDateTimePicker = ({ control }) => {
 };
 
 export default FormDateTimePicker;
+
+const styles = {
+    red: 'text-red-600',
+};

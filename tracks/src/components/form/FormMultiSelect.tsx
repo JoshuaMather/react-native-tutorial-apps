@@ -4,7 +4,7 @@ import { View, Text, Modal, TouchableOpacity } from 'react-native';
 import { Icon, Button } from 'react-native-elements';
 import MultiSelect from 'react-native-multiple-select';
 
-const FormMultiSelect = ({ control }) => {
+const FormMultiSelect = ({ control, errors }) => {
     const [isVisible, setIsVisible] = useState(false);
     let multiSelect;
 
@@ -71,6 +71,7 @@ const FormMultiSelect = ({ control }) => {
                         {value.map((fruit) => {
                             return (
                                 <Text
+                                    key={fruit.id}
                                     className="text-lg text-gray-600 pl-3 pb-2"
                                     style={{ textTransform: 'capitalize' }}
                                 >
@@ -137,6 +138,11 @@ const FormMultiSelect = ({ control }) => {
                             />
                         </View>
                     </Modal>
+                    {errors.multiSelect && (
+                        <Text className={`${styles.red}`}>
+                            {errors.multiSelect.message}
+                        </Text>
+                    )}
                 </View>
             )}
             name="multiSelect"
@@ -145,3 +151,7 @@ const FormMultiSelect = ({ control }) => {
 };
 
 export default FormMultiSelect;
+
+const styles = {
+    red: 'text-red-600',
+};

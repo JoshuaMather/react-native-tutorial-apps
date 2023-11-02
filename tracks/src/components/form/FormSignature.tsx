@@ -51,7 +51,9 @@ const FormSignature = ({ control, getValues, errors }) => {
                         onPress={showSignatureModal}
                     />
                     {errors.signature && (
-                        <Text className={`${styles.red}`}>Required</Text>
+                        <Text className={`${styles.red}`}>
+                            {errors.signature.message}
+                        </Text>
                     )}
                     <Modal
                         animationType="slide"

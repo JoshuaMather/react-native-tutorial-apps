@@ -9,7 +9,10 @@ import * as ImagePicker from 'expo-image-picker';
 import { Image } from 'expo-image';
 import { Controller } from 'react-hook-form';
 
-const FormImage = ({ toggleSheet, control, watch, setImageUrlValue }, ref) => {
+const FormImage = (
+    { toggleSheet, control, watch, setImageUrlValue, errors },
+    ref
+) => {
     const [image, setImage] = useState<string>(null);
     // const { register, setValue } = useFormContext();
     // const { setValue } = useForm();
@@ -87,14 +90,21 @@ const FormImage = ({ toggleSheet, control, watch, setImageUrlValue }, ref) => {
             <Controller
                 control={control}
                 render={({ field: { onChange, onBlur, value } }) => (
-                    <TextInput
-                        className="h-0 w-0"
-                        autoFocus={true}
-                        multiline
-                        onBlur={onBlur}
-                        onChange={onChange}
-                        value={value}
-                    />
+                    <View>
+                        <TextInput
+                            className="h-0 w-0"
+                            autoFocus={true}
+                            multiline
+                            onBlur={onBlur}
+                            onChange={onChange}
+                            value={value}
+                        />
+                        {errors.imageUrl && (
+                            <Text className={`${styles.red}`}>
+                                {errors.imageUrl.message}
+                            </Text>
+                        )}
+                    </View>
                 )}
                 name="imageUrl"
             />
@@ -103,3 +113,7 @@ const FormImage = ({ toggleSheet, control, watch, setImageUrlValue }, ref) => {
 };
 
 export default forwardRef(FormImage);
+
+const styles = {
+    red: 'text-red-600',
+};

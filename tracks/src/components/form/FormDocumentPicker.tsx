@@ -4,7 +4,7 @@ import { View, Text } from 'react-native';
 import * as DocumentPicker from 'expo-document-picker';
 import { Button } from 'react-native-elements';
 
-const FormDocumentPicker = ({ control }) => {
+const FormDocumentPicker = ({ control, setValue, errors }) => {
     const pickDocument = async (onChange) => {
         let result = await DocumentPicker.getDocumentAsync({});
         console.log(result);
@@ -14,7 +14,7 @@ const FormDocumentPicker = ({ control }) => {
     return (
         <Controller
             control={control}
-            defaultValue={[]}
+            defaultValue={{}}
             render={({ field: { onChange, onBlur, value } }) => (
                 <View>
                     <Text className="font-bold text-xl pb-2">Document</Text>
@@ -24,13 +24,13 @@ const FormDocumentPicker = ({ control }) => {
                                 className="text-lg text-gray-600 pl-3 pb-2"
                                 style={{ textTransform: 'capitalize' }}
                             >
-                                {value.assets[0].name}
+                                {value?.assets[0].name}
                             </Text>
                             <Text
                                 className="text-lg text-gray-600 pl-3 pb-2"
                                 style={{ textTransform: 'capitalize' }}
                             >
-                                {value.assets[0].mimeType}
+                                {value?.assets[0].mimeType}
                             </Text>
                         </>
                     )}
@@ -45,8 +45,13 @@ const FormDocumentPicker = ({ control }) => {
                             title={'Remove'}
                             type="clear"
                             titleStyle={{ color: 'rgba(245, 0, 0, 0.8)' }}
-                            onPress={() => onChange(undefined)}
+                            onPress={() => setValue('document', {})}
                         />
+                    )}
+                    {errors.document && (
+                        <Text className={`${styles.red}`}>
+                            {errors.document.message}
+                        </Text>
                     )}
                 </View>
             )}
@@ -56,3 +61,7 @@ const FormDocumentPicker = ({ control }) => {
 };
 
 export default FormDocumentPicker;
+
+const styles = {
+    red: 'text-red-600',
+};

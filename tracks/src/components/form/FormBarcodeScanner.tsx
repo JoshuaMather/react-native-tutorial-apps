@@ -3,7 +3,7 @@ import { View, Text, Button } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import { Controller } from 'react-hook-form';
 
-const FormBarcodeScanner = ({ control }) => {
+const FormBarcodeScanner = ({ control, errors }) => {
     const [hasPermission, setHasPermission] = useState(null);
     const [scannerOpen, setScannerOpen] = useState(false);
 
@@ -70,6 +70,16 @@ const FormBarcodeScanner = ({ control }) => {
                             onPress={() => setScannerOpen(true)}
                         />
                     )}
+                    {errors['barcode.type'] && (
+                        <Text className={`${styles.red}`}>
+                            {errors['barcode.type'].message}
+                        </Text>
+                    )}
+                    {errors['barcode.data'] && (
+                        <Text className={`${styles.red}`}>
+                            {errors['barcode.data'].message}
+                        </Text>
+                    )}
                 </View>
             )}
             name="barcode"
@@ -78,3 +88,7 @@ const FormBarcodeScanner = ({ control }) => {
 };
 
 export default FormBarcodeScanner;
+
+const styles = {
+    red: 'text-red-600',
+};
