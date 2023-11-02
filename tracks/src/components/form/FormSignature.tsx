@@ -11,6 +11,7 @@ import {
 import { Button } from 'react-native-elements';
 import Signature, { SignatureViewRef } from 'react-native-signature-canvas';
 import { Icon } from '@rneui/themed';
+import Styles from '../../../customStyles';
 
 const FormSignature = ({ control, getValues, errors }) => {
     const sigRef = useRef<SignatureViewRef>();
@@ -34,7 +35,7 @@ const FormSignature = ({ control, getValues, errors }) => {
                 <View>
                     <Text className="font-bold text-xl pb-2">
                         Signature
-                        <Text className={`${styles.red} font-extrabold`}>
+                        <Text className={`${Styles.red} font-extrabold`}>
                             *
                         </Text>
                     </Text>
@@ -51,7 +52,7 @@ const FormSignature = ({ control, getValues, errors }) => {
                         onPress={showSignatureModal}
                     />
                     {errors.signature && (
-                        <Text className={`${styles.red}`}>
+                        <Text className={`${Styles.red}`}>
                             {errors.signature.message}
                         </Text>
                     )}
@@ -65,7 +66,7 @@ const FormSignature = ({ control, getValues, errors }) => {
                                 <Text className="text-2xl font-bold pl-2">
                                     Signature
                                     <Text
-                                        className={`${styles.red} font-extrabold`}
+                                        className={`${Styles.red} font-extrabold`}
                                     >
                                         *
                                     </Text>
@@ -102,9 +103,6 @@ const FormSignature = ({ control, getValues, errors }) => {
     );
 };
 
-const styles = {
-    red: 'text-red-600',
-};
 const style = 'body { opacity: 0.99; }';
 
 export default FormSignature;

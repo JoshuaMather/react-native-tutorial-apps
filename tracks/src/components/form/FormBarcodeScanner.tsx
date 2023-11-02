@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, Button } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import { Controller } from 'react-hook-form';
+import Styles from '../../../customStyles';
 
 const FormBarcodeScanner = ({ control, errors }) => {
     const [hasPermission, setHasPermission] = useState(null);
@@ -71,12 +72,12 @@ const FormBarcodeScanner = ({ control, errors }) => {
                         />
                     )}
                     {errors['barcode.type'] && (
-                        <Text className={`${styles.red}`}>
+                        <Text className={`${Styles.red}`}>
                             {errors['barcode.type'].message}
                         </Text>
                     )}
                     {errors['barcode.data'] && (
-                        <Text className={`${styles.red}`}>
+                        <Text className={`${Styles.red}`}>
                             {errors['barcode.data'].message}
                         </Text>
                     )}
@@ -88,7 +89,3 @@ const FormBarcodeScanner = ({ control, errors }) => {
 };
 
 export default FormBarcodeScanner;
-
-const styles = {
-    red: 'text-red-600',
-};

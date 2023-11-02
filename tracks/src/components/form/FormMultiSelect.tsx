@@ -3,6 +3,7 @@ import { Controller } from 'react-hook-form';
 import { View, Text, Modal, TouchableOpacity } from 'react-native';
 import { Icon, Button } from 'react-native-elements';
 import MultiSelect from 'react-native-multiple-select';
+import Styles from '../../../customStyles';
 
 const FormMultiSelect = ({ control, errors }) => {
     const [isVisible, setIsVisible] = useState(false);
@@ -139,7 +140,7 @@ const FormMultiSelect = ({ control, errors }) => {
                         </View>
                     </Modal>
                     {errors.multiSelect && (
-                        <Text className={`${styles.red}`}>
+                        <Text className={`${Styles.red}`}>
                             {errors.multiSelect.message}
                         </Text>
                     )}
@@ -151,7 +152,3 @@ const FormMultiSelect = ({ control, errors }) => {
 };
 
 export default FormMultiSelect;
-
-const styles = {
-    red: 'text-red-600',
-};

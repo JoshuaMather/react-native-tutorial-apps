@@ -3,6 +3,7 @@ import { Controller } from 'react-hook-form';
 import { View, Text } from 'react-native';
 import * as DocumentPicker from 'expo-document-picker';
 import { Button } from 'react-native-elements';
+import Styles from '../../../customStyles';
 
 const FormDocumentPicker = ({ control, setValue, errors }) => {
     const pickDocument = async (onChange) => {
@@ -49,7 +50,7 @@ const FormDocumentPicker = ({ control, setValue, errors }) => {
                         />
                     )}
                     {errors.document && (
-                        <Text className={`${styles.red}`}>
+                        <Text className={`${Styles.red}`}>
                             {errors.document.message}
                         </Text>
                     )}
@@ -61,7 +62,3 @@ const FormDocumentPicker = ({ control, setValue, errors }) => {
 };
 
 export default FormDocumentPicker;
-
-const styles = {
-    red: 'text-red-600',
-};

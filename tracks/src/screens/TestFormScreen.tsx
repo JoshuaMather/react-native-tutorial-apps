@@ -33,6 +33,7 @@ import FormDocumentPicker from '../components/form/FormDocumentPicker';
 import { DocumentPickerResult } from 'expo-document-picker';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import Styles from '../../customStyles';
 
 type Fields = {
     test: string;
@@ -253,7 +254,7 @@ const TestFormScreen = () => {
                                         className="text-lg"
                                     />
                                     {errors.test && (
-                                        <Text className={`${styles.red}`}>
+                                        <Text className={`${Styles.red}`}>
                                             {errors.test.message}
                                         </Text>
                                     )}
@@ -271,7 +272,7 @@ const TestFormScreen = () => {
                                     <Text className="font-bold text-xl">
                                         Required Text Test
                                         <Text
-                                            className={`${styles.red} font-extrabold`}
+                                            className={`${Styles.red} font-extrabold`}
                                         >
                                             *
                                         </Text>
@@ -285,7 +286,7 @@ const TestFormScreen = () => {
                                         className="text-lg"
                                     />
                                     {errors.requiredTest && (
-                                        <Text className={`${styles.red}`}>
+                                        <Text className={`${Styles.red}`}>
                                             {errors.requiredTest.message}
                                         </Text>
                                     )}
@@ -316,7 +317,7 @@ const TestFormScreen = () => {
                                     <Text className="font-bold text-xl pb-2">
                                         Required Checked
                                         <Text
-                                            className={`${styles.red} font-extrabold`}
+                                            className={`${Styles.red} font-extrabold`}
                                         >
                                             *
                                         </Text>
@@ -333,7 +334,7 @@ const TestFormScreen = () => {
                                         />
                                     </TouchableOpacity>
                                     {errors.checked && (
-                                        <Text className={`${styles.red}`}>
+                                        <Text className={`${Styles.red}`}>
                                             {errors.checked.message}
                                         </Text>
                                     )}
@@ -411,7 +412,7 @@ const TestFormScreen = () => {
                                         />
                                     </RadioButton.Group>
                                     {errors.radio && (
-                                        <Text className={`${styles.red}`}>
+                                        <Text className={`${Styles.red}`}>
                                             {errors.radio.message}
                                         </Text>
                                     )}
@@ -481,10 +482,6 @@ const TestFormScreen = () => {
             )}
         </View>
     );
-};
-
-const styles = {
-    red: 'text-red-600',
 };
 
 export default TestFormScreen;

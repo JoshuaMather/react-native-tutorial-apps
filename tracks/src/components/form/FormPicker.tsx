@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { useFormContext, Controller } from 'react-hook-form';
+import Styles from '../../../customStyles';
 
 const FormPicker = ({ control, errors }) => {
     return (
@@ -20,7 +21,7 @@ const FormPicker = ({ control, errors }) => {
                             <Picker.Item label="Orange" value="orange" />
                         </Picker>
                         {errors.colour && (
-                            <Text className={`${styles.red}`}>
+                            <Text className={`${Styles.red}`}>
                                 {errors.colour.message}
                             </Text>
                         )}
@@ -33,7 +34,3 @@ const FormPicker = ({ control, errors }) => {
 };
 
 export default FormPicker;
-
-const styles = {
-    red: 'text-red-600',
-};

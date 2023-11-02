@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Controller } from 'react-hook-form';
+import Styles from '../../../customStyles';
 
 const FormDateTimePicker = ({ control, errors }) => {
     const [showDate, setShowDate] = useState(false);
@@ -49,7 +50,7 @@ const FormDateTimePicker = ({ control, errors }) => {
                             Date: {value.toLocaleDateString()}
                         </Text>
                         {errors.date && (
-                            <Text className={`${styles.red}`}>
+                            <Text className={`${Styles.red}`}>
                                 {errors.date.message}
                             </Text>
                         )}
@@ -77,7 +78,7 @@ const FormDateTimePicker = ({ control, errors }) => {
                             Time: {value.toLocaleTimeString()}
                         </Text>
                         {errors.time && (
-                            <Text className={`${styles.red}`}>
+                            <Text className={`${Styles.red}`}>
                                 {errors.time.message}
                             </Text>
                         )}
@@ -90,7 +91,3 @@ const FormDateTimePicker = ({ control, errors }) => {
 };
 
 export default FormDateTimePicker;
-
-const styles = {
-    red: 'text-red-600',
-};

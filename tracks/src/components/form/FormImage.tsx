@@ -8,6 +8,7 @@ import { View, Text, TouchableOpacity, TextInput, Button } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { Image } from 'expo-image';
 import { Controller } from 'react-hook-form';
+import Styles from '../../../customStyles';
 
 const FormImage = (
     { toggleSheet, control, watch, setImageUrlValue, errors },
@@ -100,7 +101,7 @@ const FormImage = (
                             value={value}
                         />
                         {errors.imageUrl && (
-                            <Text className={`${styles.red}`}>
+                            <Text className={`${Styles.red}`}>
                                 {errors.imageUrl.message}
                             </Text>
                         )}
@@ -113,7 +114,3 @@ const FormImage = (
 };
 
 export default forwardRef(FormImage);
-
-const styles = {
-    red: 'text-red-600',
-};
