@@ -16,14 +16,16 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "test"
+      "bundleIdentifier": "test",
+      "buildNumber": "1"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.jom_gloversure.tracks"
+      "package": "com.jom_gloversure.tracks",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"

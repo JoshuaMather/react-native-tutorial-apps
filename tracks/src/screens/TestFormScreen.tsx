@@ -35,6 +35,19 @@ import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Styles from '../../customStyles';
 
+// type Client = {
+//     name: string;
+//     address: string;
+// }
+// type Getters<T> = {
+//     [K in keyof T as `get${Capitalize<string & K>}`]:  () => T[K];
+// };
+// type clientType = Getters<Client>;
+// // type clientType = {
+// //     getName: () => string;
+// //     getAddress: () => string;
+// // }
+
 type Fields = {
     test: string;
     requiredTest: string;
@@ -180,7 +193,7 @@ const TestFormScreen = () => {
         console.log('Errors: ', errors);
     const methods = useForm();
 
-    const setImageUrlValue = (url) => {
+    const setImageUrlValue = (url: string) => {
         console.log('url', url);
         setValue('imageUrl', url);
     };
