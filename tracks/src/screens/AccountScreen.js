@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Text } from 'react-native-elements';
 import { Button } from 'react-native-elements';
@@ -6,10 +6,19 @@ import Spacer from '../components/Spacer';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useDispatch } from 'react-redux';
 import { signout } from '../store/slices/authSlice';
+import useCacheSubmit from '../hooks/useCacheSubmit';
 
 const AccountScreen = ({ navigation }) => {
     const dispatch = useDispatch();
     const insets = useSafeAreaInsets();
+    const { submitCache } = useCacheSubmit();
+
+    useEffect(() => {
+        const unsubscribe = navigation.addListener('focus', () => {
+            submitCache();
+        });
+        return unsubscribe;
+    }, [navigation]);
 
     return (
         <View

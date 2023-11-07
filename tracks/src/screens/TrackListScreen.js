@@ -13,9 +13,11 @@ import { ListItem } from 'react-native-elements';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 // import NetInfo from '@react-native-community/netinfo';
 import { useFetchTracksQuery } from '../store/apis/trackApi';
+import useCacheSubmit from '../hooks/useCacheSubmit';
 
 const TrackListScreen = ({ navigation }) => {
     const { data, isFetching, error, refetch } = useFetchTracksQuery();
+    const { submitCache } = useCacheSubmit();
     const insets = useSafeAreaInsets();
     // const [type, setType] = useState(NetInfo.type);
     // const [isConnected, setIsConnected] = useState(NetInfo.isConnected);
@@ -26,6 +28,7 @@ const TrackListScreen = ({ navigation }) => {
 
     useEffect(() => {
         const unsubscribe = navigation.addListener('focus', () => {
+            submitCache();
             refetch();
         });
         // const unsubscribeNet = NetInfo.addEventListener((state) => {

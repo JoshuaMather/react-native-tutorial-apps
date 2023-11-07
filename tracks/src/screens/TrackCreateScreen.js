@@ -1,5 +1,5 @@
 // import '../_mockLocation';
-import React, { useContext, useCallback } from 'react';
+import React, { useContext, useCallback, useEffect } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { Text } from 'react-native-elements';
 import Map from '../components/Map';
@@ -9,8 +9,9 @@ import useLocation from '../hooks/useLocation';
 import TrackForm from '../components/TrackForm';
 import { useIsFocused } from '@react-navigation/native';
 import { addLocation } from '../store/slices/locationSlice';
+import useCacheSubmit from '../hooks/useCacheSubmit';
 
-const TrackCreateScreen = () => {
+const TrackCreateScreen = ({ navigation }) => {
     const insets = useSafeAreaInsets();
     const isFocused = useIsFocused();
     const dispatch = useDispatch();
@@ -21,6 +22,14 @@ const TrackCreateScreen = () => {
         },
         [recording]
     );
+    const { submitCache } = useCacheSubmit();
+
+    useEffect(() => {
+        const unsubscribe = navigation.addListener('focus', () => {
+            submitCache();
+        });
+        return unsubscribe;
+    }, [navigation]);
 
     const [err] = useLocation(isFocused || recording, callback);
     return (
