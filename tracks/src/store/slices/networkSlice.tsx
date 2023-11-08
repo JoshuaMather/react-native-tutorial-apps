@@ -1,10 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+// import useCacheSubmit from '../../hooks/useCacheSubmit';
+
+// const { submitCache } = useCacheSubmit();
 
 const networkSlice = createSlice({
     name: 'network',
     initialState: {
         connected: null,
         networkType: null,
+        uploading: false,
     },
     reducers: {
         networkChanged(
@@ -13,6 +17,9 @@ const networkSlice = createSlice({
         ) {
             (state.connected = action.payload.connected),
                 (state.networkType = action.payload.networkType);
+            // if (state.connected === true) {
+            //     submitCache();
+            // }
         },
     },
 });

@@ -1,12 +1,23 @@
-import React, { useContext } from 'react';
+import React, { useCallback, useContext, useEffect } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useSelector } from 'react-redux';
+import useNetwork from '../hooks/useNetwork';
 import { RootState } from '../store/store';
+import useCacheSubmit from '../hooks/useCacheSubmit';
 
 const NetworkBanner = () => {
+    useNetwork();
+    const { submitCache } = useCacheSubmit();
     const networkState = useSelector((state: RootState) => state.network);
     const insets = useSafeAreaInsets();
+
+    useEffect(() => {
+        if (networkState.connected) {
+            console.log('CONNECTED');
+            submitCache();
+        }
+    }, [networkState.connected]);
 
     return (
         <View

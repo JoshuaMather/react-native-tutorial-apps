@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useCallback } from 'react';
 import {
     StyleSheet,
     FlatList,
@@ -14,11 +14,14 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 // import NetInfo from '@react-native-community/netinfo';
 import { useFetchTracksQuery } from '../store/apis/trackApi';
 import useCacheSubmit from '../hooks/useCacheSubmit';
+import { useDispatch, useSelector } from 'react-redux';
 
 const TrackListScreen = ({ navigation }) => {
     const { data, isFetching, error, refetch } = useFetchTracksQuery();
     const { submitCache } = useCacheSubmit();
+    const dispatch = useDispatch();
     const insets = useSafeAreaInsets();
+    const networkState = useSelector((state) => state.network);
     // const [type, setType] = useState(NetInfo.type);
     // const [isConnected, setIsConnected] = useState(NetInfo.isConnected);
 

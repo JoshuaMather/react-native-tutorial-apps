@@ -1,7 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import NetInfo from '@react-native-community/netinfo';
 import { useDispatch } from 'react-redux';
 import { networkChanged } from '../store/slices/networkSlice';
+import useCacheSubmit from './useCacheSubmit';
 
 export default () => {
     const dispatch = useDispatch();

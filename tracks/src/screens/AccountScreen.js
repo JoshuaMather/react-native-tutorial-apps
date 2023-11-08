@@ -7,14 +7,48 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useDispatch } from 'react-redux';
 import { signout } from '../store/slices/authSlice';
 import useCacheSubmit from '../hooks/useCacheSubmit';
+import useCacheAdd from '../hooks/useCacheAdd';
 
 const AccountScreen = ({ navigation }) => {
     const dispatch = useDispatch();
     const insets = useSafeAreaInsets();
     const { submitCache } = useCacheSubmit();
+    const { addToCache } = useCacheAdd();
 
     useEffect(() => {
         const unsubscribe = navigation.addListener('focus', () => {
+            track = {
+                name: 'test',
+                locations: [
+                    {
+                        coords: {
+                            accuracy: 13.465999603271484,
+                            altitude: 116.20000457763672,
+                            altitudeAccuracy: 0.9271583557128906,
+                            heading: 0,
+                            latitude: 53.4241612,
+                            longitude: -2.7460683,
+                            speed: 0.08601167052984238,
+                        },
+                        mocked: false,
+                        timestamp: 1699459293873,
+                    },
+                    {
+                        coords: {
+                            accuracy: 27.540000915527344,
+                            altitude: 116.20000457763672,
+                            altitudeAccuracy: 0.9319633841514587,
+                            heading: 350.73236083984375,
+                            latitude: 53.4241805,
+                            longitude: -2.7462217,
+                            speed: 1.7022489309310913,
+                        },
+                        mocked: false,
+                        timestamp: 1699459297061,
+                    },
+                ],
+            };
+            // addToCache(track);
             submitCache();
         });
         return unsubscribe;

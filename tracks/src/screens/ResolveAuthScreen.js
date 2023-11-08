@@ -13,7 +13,6 @@ import { navigationRef } from '../navigationRef';
 import { FontAwesome } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import NetworkBanner from '../components/NetworkBanner';
-import useNetwork from '../hooks/useNetwork';
 import { useDispatch, useSelector } from 'react-redux';
 import { tryLocalSignIn } from '../store/slices/authSlice';
 
@@ -25,8 +24,6 @@ const AccountStack = createStackNavigator();
 const ResolveAuthScreen = () => {
     const dispatch = useDispatch();
     const { token } = useSelector((state) => state.auth);
-
-    useNetwork();
 
     useEffect(() => {
         dispatch(tryLocalSignIn());
