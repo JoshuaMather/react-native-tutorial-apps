@@ -34,6 +34,7 @@ import { DocumentPickerResult } from 'expo-document-picker';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Styles from '../../customStyles';
+import useEmail from '../hooks/useEmail';
 
 // type Client = {
 //     name: string;
@@ -175,6 +176,7 @@ const TestFormScreen = () => {
         getValues,
         formState: { errors, isLoading },
     } = useForm<Fields>({ resolver });
+    const { createEmail } = useEmail();
 
     const onSubmit: SubmitHandler<Fields> = async (data: Fields) => {
         console.log('data', data);
@@ -187,6 +189,7 @@ const TestFormScreen = () => {
             );
             // console.log('base64', fileBase64);
         }
+        createEmail(data);
     };
 
     const onError = (errors: FieldErrors<Fields>) =>

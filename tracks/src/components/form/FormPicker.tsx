@@ -13,12 +13,12 @@ const FormPicker = ({ control, errors }) => {
                 render={({ field: { onChange, onBlur, value } }) => (
                     <View>
                         <Picker selectedValue={value} onValueChange={onChange}>
-                            <Picker.Item label="Red" value="red" />
-                            <Picker.Item label="Green" value="green" />
-                            <Picker.Item label="Blue" value="blue" />
-                            <Picker.Item label="Yellow" value="yellow" />
-                            <Picker.Item label="Purple" value="purple" />
-                            <Picker.Item label="Orange" value="orange" />
+                            <Picker.Item label="Red" value="Red" />
+                            <Picker.Item label="Green" value="Green" />
+                            <Picker.Item label="Blue" value="Blue" />
+                            <Picker.Item label="Yellow" value="Yellow" />
+                            <Picker.Item label="Purple" value="Purple" />
+                            <Picker.Item label="Orange" value="Orange" />
                         </Picker>
                         {errors.colour && (
                             <Text className={`${Styles.red}`}>
