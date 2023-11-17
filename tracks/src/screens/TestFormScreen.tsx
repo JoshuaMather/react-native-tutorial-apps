@@ -165,7 +165,7 @@ const useYupValidationResolver = (validationSchema) =>
         [validationSchema]
     );
 
-const TestFormScreen = () => {
+const TestFormScreen = ({ test }) => {
     const resolver = useYupValidationResolver(schema);
     const {
         register,
@@ -369,6 +369,7 @@ const TestFormScreen = () => {
                             <FormBarcodeScanner
                                 control={control}
                                 errors={errors}
+                                test={test}
                             />
                         </View>
                         <View className="pb-5">

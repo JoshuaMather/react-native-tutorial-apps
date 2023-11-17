@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -105,14 +105,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -141,21 +141,21 @@ import { Picker } from '@react-native-picker/picker';
 import { useFormContext, Controller } from 'react-hook-form';
 import Styles from '../../../customStyles';
 &nbsp;
-const FormPicker = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span> control, errors }) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    return (</span>
+const FormPicker = ({ control, errors }) =&gt; {
+    return (
         &lt;View&gt;
             &lt;Text className="font-bold text-xl"&gt;Select Colour&lt;/Text&gt;
             &lt;Controller
                 control={control}
-                render={<span class="fstat-no" title="function not covered" >({</span> field: { onChange, onBlur, value } }) =&gt; (
-<span class="cstat-no" title="statement not covered" >                    &lt;View&gt;</span>
+                render={({ field: { onChange, onBlur, value } }) =&gt; (
+                    &lt;View&gt;
                         &lt;Picker selectedValue={value} onValueChange={onChange}&gt;
-                            &lt;Picker.Item label="Red" value="red" /&gt;
-                            &lt;Picker.Item label="Green" value="green" /&gt;
-                            &lt;Picker.Item label="Blue" value="blue" /&gt;
-                            &lt;Picker.Item label="Yellow" value="yellow" /&gt;
-                            &lt;Picker.Item label="Purple" value="purple" /&gt;
-                            &lt;Picker.Item label="Orange" value="orange" /&gt;
+                            &lt;Picker.Item label="Red" value="Red" /&gt;
+                            &lt;Picker.Item label="Green" value="Green" /&gt;
+                            &lt;Picker.Item label="Blue" value="Blue" /&gt;
+                            &lt;Picker.Item label="Yellow" value="Yellow" /&gt;
+                            &lt;Picker.Item label="Purple" value="Purple" /&gt;
+                            &lt;Picker.Item label="Orange" value="Orange" /&gt;
                         &lt;/Picker&gt;
                         {errors.colour &amp;&amp; (
                             &lt;Text className={`${Styles.red}`}&gt;
@@ -178,7 +178,7 @@ export default FormPicker;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-11-06T14:37:24.510Z
+                at 2023-11-17T12:21:32.003Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

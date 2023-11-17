@@ -1,0 +1,1488 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    [
+      {
+        "flexBasis": "0%",
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
+  <Text
+    style={
+      [
+        {
+          "textAlign": "center",
+        },
+        {
+          "fontSize": 36,
+          "lineHeight": 40,
+        },
+        {
+          "paddingTop": 20,
+        },
+        {
+          "fontWeight": "700",
+        },
+        {
+          "borderBottomWidth": 2,
+        },
+        {
+          "borderBottomColor": "#03fcf4",
+          "borderLeftColor": "#03fcf4",
+          "borderRightColor": "#03fcf4",
+          "borderTopColor": "#03fcf4",
+        },
+      ]
+    }
+  >
+    Test Form
+  </Text>
+  <RCTScrollView>
+    <View>
+      <View
+        style={
+          {
+            "margin": 15,
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "paddingBottom": 20,
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "fontWeight": "700",
+                },
+                {
+                  "fontSize": 20,
+                  "lineHeight": 28,
+                },
+              ]
+            }
+          >
+            Text Test
+          </Text>
+          <TextInput
+            autoCapitalize="none"
+            onBlur={[Function]}
+            onChangeText={[Function]}
+            placeholder="Test..."
+            style={
+              [
+                {
+                  "fontSize": 18,
+                  "lineHeight": 28,
+                },
+              ]
+            }
+          />
+        </View>
+        <View
+          style={
+            [
+              {
+                "paddingBottom": 20,
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "fontWeight": "700",
+                },
+                {
+                  "fontSize": 20,
+                  "lineHeight": 28,
+                },
+              ]
+            }
+          >
+            Required Text Test
+            <Text
+              style={
+                [
+                  {
+                    "fontWeight": "700",
+                  },
+                  {
+                    "fontWeight": "800",
+                  },
+                ]
+              }
+            >
+              *
+            </Text>
+          </Text>
+          <TextInput
+            onBlur={[Function]}
+            onChangeText={[Function]}
+            placeholder="requiredTest"
+            style={
+              [
+                {
+                  "fontSize": 18,
+                  "lineHeight": 28,
+                },
+              ]
+            }
+          />
+        </View>
+        <View
+          style={
+            [
+              {
+                "paddingBottom": 20,
+              },
+            ]
+          }
+        >
+          <View>
+            <Text
+              style={
+                [
+                  {
+                    "fontWeight": "700",
+                  },
+                  {
+                    "fontSize": 20,
+                    "lineHeight": 28,
+                  },
+                ]
+              }
+            >
+              Image
+            </Text>
+            <View
+              style={
+                [
+                  {
+                    "flexDirection": "row",
+                  },
+                  {
+                    "justifyContent": "space-around",
+                  },
+                  {
+                    "paddingTop": 12,
+                  },
+                  {
+                    "paddingBottom": 12,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "backgroundColor": "#86efac",
+                    "height": 32,
+                    "justifyContent": "center",
+                    "opacity": 1,
+                    "width": 112,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "textAlign": "center",
+                      },
+                    ]
+                  }
+                >
+                  Select
+                </Text>
+              </View>
+            </View>
+            <View
+              style={
+                [
+                  {
+                    "justifyContent": "center",
+                  },
+                  {
+                    "flexDirection": "row",
+                  },
+                ]
+              }
+            />
+            <View>
+              <TextInput
+                autoFocus={true}
+                multiline={true}
+                onBlur={[Function]}
+                onChange={[Function]}
+                style={
+                  [
+                    {
+                      "height": 0,
+                    },
+                    {
+                      "width": 0,
+                    },
+                  ]
+                }
+              />
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            [
+              {
+                "paddingBottom": 20,
+              },
+            ]
+          }
+        >
+          <View>
+            <Text
+              style={
+                [
+                  {
+                    "fontWeight": "700",
+                  },
+                  {
+                    "fontSize": 20,
+                    "lineHeight": 28,
+                  },
+                ]
+              }
+            >
+              Select Colour
+            </Text>
+            <View>
+              <View>
+                <RNCPicker
+                  items={
+                    [
+                      {
+                        "label": "Red",
+                        "testID": undefined,
+                        "textColor": undefined,
+                        "value": "Red",
+                      },
+                      {
+                        "label": "Green",
+                        "testID": undefined,
+                        "textColor": undefined,
+                        "value": "Green",
+                      },
+                      {
+                        "label": "Blue",
+                        "testID": undefined,
+                        "textColor": undefined,
+                        "value": "Blue",
+                      },
+                      {
+                        "label": "Yellow",
+                        "testID": undefined,
+                        "textColor": undefined,
+                        "value": "Yellow",
+                      },
+                      {
+                        "label": "Purple",
+                        "testID": undefined,
+                        "textColor": undefined,
+                        "value": "Purple",
+                      },
+                      {
+                        "label": "Orange",
+                        "testID": undefined,
+                        "textColor": undefined,
+                        "value": "Orange",
+                      },
+                    ]
+                  }
+                  numberOfLines={1}
+                  onChange={[Function]}
+                  selectedIndex={0}
+                  style={
+                    [
+                      {
+                        "height": 216,
+                      },
+                      undefined,
+                    ]
+                  }
+                />
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            [
+              {
+                "paddingBottom": 20,
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "fontWeight": "700",
+                },
+                {
+                  "fontSize": 20,
+                  "lineHeight": 28,
+                },
+                {
+                  "paddingBottom": 8,
+                },
+              ]
+            }
+          >
+            Required Checked
+            <Text
+              style={
+                [
+                  {
+                    "fontWeight": "700",
+                  },
+                  {
+                    "fontWeight": "800",
+                  },
+                ]
+              }
+            >
+              *
+            </Text>
+          </Text>
+          <View
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "opacity": 1,
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              }
+            }
+          >
+            <Text
+              style={
+                [
+                  {
+                    "fontSize": 18,
+                    "lineHeight": 28,
+                  },
+                ]
+              }
+            >
+              Agree
+            </Text>
+            <View
+              accessibilityRole="checkbox"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  {
+                    "borderColor": "#657786",
+                    "borderRadius": 2,
+                    "borderWidth": 2,
+                    "height": 20,
+                    "width": 20,
+                  },
+                  undefined,
+                  undefined,
+                  false,
+                  undefined,
+                  undefined,
+                ]
+              }
+            />
+          </View>
+        </View>
+        <View
+          style={
+            [
+              {
+                "paddingBottom": 20,
+              },
+            ]
+          }
+        >
+          <View>
+            <Text
+              style={
+                [
+                  {
+                    "fontWeight": "700",
+                  },
+                  {
+                    "fontSize": 20,
+                    "lineHeight": 28,
+                  },
+                  {
+                    "paddingBottom": 8,
+                  },
+                ]
+              }
+            >
+              Signature
+              <Text
+                style={
+                  [
+                    {
+                      "fontWeight": "700",
+                    },
+                    {
+                      "fontWeight": "800",
+                    },
+                  ]
+                }
+              >
+                *
+              </Text>
+            </Text>
+            <View
+              style={
+                [
+                  {
+                    "borderRadius": 3,
+                    "overflow": "hidden",
+                  },
+                  {
+                    "borderRadius": 3,
+                  },
+                  undefined,
+                  false,
+                ]
+              }
+            >
+              <View
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": false,
+                    "checked": undefined,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "opacity": 1,
+                  }
+                }
+              >
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "transparent",
+                      "borderColor": "#2089dc",
+                      "borderRadius": 3,
+                      "borderWidth": 0,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "padding": 8,
+                    }
+                  }
+                >
+                  <Text
+                    style={
+                      {
+                        "color": "rgba(78, 116, 289, 1)",
+                        "fontSize": 18,
+                        "paddingVertical": 1,
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    Sign
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <Modal
+              animationType="slide"
+              hardwareAccelerated={false}
+              onDismiss={[Function]}
+              visible={false}
+            />
+          </View>
+        </View>
+        <View
+          style={
+            [
+              {
+                "paddingBottom": 20,
+              },
+            ]
+          }
+        >
+          <Text>
+            Requesting for camera permission
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "paddingBottom": 20,
+              },
+            ]
+          }
+        >
+          <View>
+            <Text
+              style={
+                [
+                  {
+                    "fontWeight": "700",
+                  },
+                  {
+                    "fontSize": 20,
+                    "lineHeight": 28,
+                  },
+                ]
+              }
+            >
+              Date & Time
+            </Text>
+            <View
+              style={
+                [
+                  {
+                    "flexDirection": "row",
+                  },
+                  {
+                    "justifyContent": "space-around",
+                  },
+                  {
+                    "paddingTop": 12,
+                  },
+                  {
+                    "paddingBottom": 12,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "backgroundColor": "#c084fc",
+                    "height": 32,
+                    "justifyContent": "center",
+                    "opacity": 1,
+                    "width": 112,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "textAlign": "center",
+                      },
+                    ]
+                  }
+                >
+                  Date
+                </Text>
+              </View>
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "backgroundColor": "#c084fc",
+                    "height": 32,
+                    "justifyContent": "center",
+                    "opacity": 1,
+                    "width": 112,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "textAlign": "center",
+                      },
+                    ]
+                  }
+                >
+                  Time
+                </Text>
+              </View>
+            </View>
+            <View>
+              <Text
+                style={
+                  [
+                    {
+                      "textAlign": "center",
+                    },
+                    {
+                      "fontSize": 20,
+                      "lineHeight": 28,
+                    },
+                  ]
+                }
+              >
+                Date: 
+                17/11/2023
+              </Text>
+            </View>
+            <View>
+              <Text
+                style={
+                  [
+                    {
+                      "textAlign": "center",
+                    },
+                    {
+                      "fontSize": 20,
+                      "lineHeight": 28,
+                    },
+                  ]
+                }
+              >
+                Time: 
+                12:21:28
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            [
+              {
+                "paddingBottom": 20,
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "fontWeight": "700",
+                },
+                {
+                  "fontSize": 20,
+                  "lineHeight": 28,
+                },
+              ]
+            }
+          >
+            Radio Buttons
+          </Text>
+          <View>
+            <View
+              accessibilityState={
+                {
+                  "disabled": false,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  false,
+                  undefined,
+                ]
+              }
+            >
+              <View
+                pointerEvents="none"
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                      "paddingHorizontal": 16,
+                      "paddingVertical": 8,
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#000000",
+                        "fontFamily": "System",
+                        "fontWeight": "400",
+                        "textAlign": "left",
+                      },
+                      [
+                        {
+                          "fontSize": 16,
+                        },
+                        {
+                          "color": "#000000",
+                        },
+                        undefined,
+                      ],
+                    ]
+                  }
+                >
+                  One
+                </Text>
+                <View
+                  accessibilityLiveRegion="polite"
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "disabled": false,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      {
+                        "overflow": "hidden",
+                      },
+                      {
+                        "borderRadius": 18,
+                        "padding": 6,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "opacity": 0,
+                      }
+                    }
+                  >
+                    <Text />
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            accessibilityState={
+              {
+                "disabled": false,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                false,
+                undefined,
+              ]
+            }
+          >
+            <View
+              pointerEvents="none"
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "paddingHorizontal": 16,
+                    "paddingVertical": 8,
+                  },
+                  undefined,
+                ]
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#000000",
+                      "fontFamily": "System",
+                      "fontWeight": "400",
+                      "textAlign": "left",
+                    },
+                    [
+                      {
+                        "fontSize": 16,
+                      },
+                      {
+                        "color": "#000000",
+                      },
+                      undefined,
+                    ],
+                  ]
+                }
+              >
+                Two
+              </Text>
+              <View
+                accessibilityLiveRegion="polite"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "disabled": false,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    {
+                      "overflow": "hidden",
+                    },
+                    {
+                      "borderRadius": 18,
+                      "padding": 6,
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    {
+                      "opacity": 0,
+                    }
+                  }
+                >
+                  <Text />
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            accessibilityState={
+              {
+                "disabled": false,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                false,
+                undefined,
+              ]
+            }
+          >
+            <View
+              pointerEvents="none"
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "paddingHorizontal": 16,
+                    "paddingVertical": 8,
+                  },
+                  undefined,
+                ]
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#000000",
+                      "fontFamily": "System",
+                      "fontWeight": "400",
+                      "textAlign": "left",
+                    },
+                    [
+                      {
+                        "fontSize": 16,
+                      },
+                      {
+                        "color": "#000000",
+                      },
+                      undefined,
+                    ],
+                  ]
+                }
+              >
+                Three
+              </Text>
+              <View
+                accessibilityLiveRegion="polite"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "disabled": false,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    {
+                      "overflow": "hidden",
+                    },
+                    {
+                      "borderRadius": 18,
+                      "padding": 6,
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    {
+                      "opacity": 0,
+                    }
+                  }
+                >
+                  <Text />
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            [
+              {
+                "paddingBottom": 20,
+              },
+            ]
+          }
+        >
+          <View>
+            <Text
+              style={
+                [
+                  {
+                    "fontWeight": "700",
+                  },
+                  {
+                    "fontSize": 20,
+                    "lineHeight": 28,
+                  },
+                  {
+                    "paddingBottom": 8,
+                  },
+                ]
+              }
+            >
+              Multi Select
+            </Text>
+            <View />
+            <View
+              style={
+                [
+                  {
+                    "borderRadius": 3,
+                    "overflow": "hidden",
+                  },
+                  {
+                    "borderRadius": 3,
+                  },
+                  undefined,
+                  false,
+                ]
+              }
+            >
+              <View
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": false,
+                    "checked": undefined,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "opacity": 1,
+                  }
+                }
+              >
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "transparent",
+                      "borderColor": "#2089dc",
+                      "borderRadius": 3,
+                      "borderWidth": 0,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "padding": 8,
+                    }
+                  }
+                >
+                  <Text
+                    style={
+                      {
+                        "color": "rgba(78, 116, 289, 1)",
+                        "fontSize": 18,
+                        "paddingVertical": 1,
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    Select
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <Modal
+              animationType="slide"
+              hardwareAccelerated={false}
+              onDismiss={[Function]}
+              visible={false}
+            />
+          </View>
+        </View>
+        <View
+          style={
+            [
+              {
+                "paddingBottom": 20,
+              },
+            ]
+          }
+        >
+          <View>
+            <Text
+              style={
+                [
+                  {
+                    "fontWeight": "700",
+                  },
+                  {
+                    "fontSize": 20,
+                    "lineHeight": 28,
+                  },
+                  {
+                    "paddingBottom": 8,
+                  },
+                ]
+              }
+            >
+              Document
+            </Text>
+            <View
+              style={
+                [
+                  {
+                    "borderRadius": 3,
+                    "overflow": "hidden",
+                  },
+                  {
+                    "borderRadius": 3,
+                  },
+                  undefined,
+                  false,
+                ]
+              }
+            >
+              <View
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": false,
+                    "checked": undefined,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "opacity": 1,
+                  }
+                }
+              >
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "transparent",
+                      "borderColor": "#2089dc",
+                      "borderRadius": 3,
+                      "borderWidth": 0,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "padding": 8,
+                    }
+                  }
+                >
+                  <Text
+                    style={
+                      {
+                        "color": "rgba(78, 116, 289, 1)",
+                        "fontSize": 18,
+                        "paddingVertical": 1,
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    Choose
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "opacity": 1,
+            }
+          }
+        >
+          <View
+            style={
+              [
+                {},
+              ]
+            }
+          >
+            <Text
+              style={
+                [
+                  {
+                    "color": "#007AFF",
+                    "fontSize": 18,
+                    "margin": 8,
+                    "textAlign": "center",
+                  },
+                  {
+                    "color": "#1bc900",
+                  },
+                ]
+              }
+            >
+              Submit
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+</View>
+`;

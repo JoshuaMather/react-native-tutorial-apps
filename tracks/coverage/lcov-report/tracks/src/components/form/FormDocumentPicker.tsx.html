@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">44.44% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/9</span>
+                <span class='fraction'>4/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>3/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">40% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>2/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">44.44% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/9</span>
+                <span class='fraction'>4/9</span>
             </div>
         
             
@@ -134,19 +134,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -198,22 +198,22 @@ import * as DocumentPicker from 'expo-document-picker';
 import { Button } from 'react-native-elements';
 import Styles from '../../../customStyles';
 &nbsp;
-const FormDocumentPicker = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span> control, setValue, errors }) =&gt; {</span>
-    const pickDocument = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >as</span>ync (onChange) =&gt; {</span>
+const FormDocumentPicker = ({ control, setValue, errors }) =&gt; {
+    const pickDocument = <span class="fstat-no" title="function not covered" >as</span>ync (onChange) =&gt; {
         let result = <span class="cstat-no" title="statement not covered" >await DocumentPicker.getDocumentAsync({});</span>
 <span class="cstat-no" title="statement not covered" >        console.log(result);</span>
 <span class="cstat-no" title="statement not covered" >        onChange(result);</span>
     };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return (</span>
+    return (
         &lt;Controller
             control={control}
             defaultValue={{}}
-            render={<span class="fstat-no" title="function not covered" >({</span> field: { onChange, onBlur, value } }) =&gt; (
-<span class="cstat-no" title="statement not covered" >                &lt;View&gt;</span>
+            render={({ field: { onChange, onBlur, value } }) =&gt; (
+                &lt;View&gt;
                     &lt;Text className="font-bold text-xl pb-2"&gt;Document&lt;/Text&gt;
                     {value?.assets &amp;&amp; (
-                        &lt;&gt;
+<span class="branch-1 cbranch-no" title="branch not covered" >                        &lt;&gt;</span>
                             &lt;Text
                                 className="text-lg text-gray-600 pl-3 pb-2"
                                 style={{ textTransform: 'capitalize' }}
@@ -235,7 +235,7 @@ const FormDocumentPicker = <span class="cstat-no" title="statement not covered" 
                         onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >pickDocument(onChange)}</span>
                     /&gt;
                     {value?.assets &amp;&amp; (
-                        &lt;Button
+<span class="branch-1 cbranch-no" title="branch not covered" >                        &lt;Button</span>
                             title={'Remove'}
                             type="clear"
                             titleStyle={{ color: 'rgba(245, 0, 0, 0.8)' }}
@@ -262,7 +262,7 @@ export default FormDocumentPicker;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-11-06T14:37:24.510Z
+                at 2023-11-17T12:21:32.003Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

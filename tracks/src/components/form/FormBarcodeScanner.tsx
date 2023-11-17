@@ -4,17 +4,20 @@ import { BarCodeScanner } from 'expo-barcode-scanner';
 import { Controller } from 'react-hook-form';
 import Styles from '../../../customStyles';
 
-const FormBarcodeScanner = ({ control, errors }) => {
+const FormBarcodeScanner = ({ control, errors, test }) => {
     const [hasPermission, setHasPermission] = useState(null);
     const [scannerOpen, setScannerOpen] = useState(false);
 
     useEffect(() => {
-        const getBarCodeScannerPermissions = async () => {
-            const { status } = await BarCodeScanner.requestPermissionsAsync();
-            setHasPermission(status === 'granted');
-        };
+        if (!test) {
+            const getBarCodeScannerPermissions = async () => {
+                const { status } =
+                    await BarCodeScanner.requestPermissionsAsync();
+                setHasPermission(status === 'granted');
+            };
 
-        getBarCodeScannerPermissions();
+            getBarCodeScannerPermissions();
+        }
     }, []);
 
     const handleBarCodeScanned = ({ type, data }) => {
