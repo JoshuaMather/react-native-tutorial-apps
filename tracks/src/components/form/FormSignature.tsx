@@ -12,11 +12,13 @@ import { Button } from 'react-native-elements';
 import Signature, { SignatureViewRef } from 'react-native-signature-canvas';
 import { Icon } from '@rneui/themed';
 import Styles from '../../../customStyles';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const FormSignature = ({ control, getValues, errors }) => {
     const sigRef = useRef<SignatureViewRef>();
     const [isVisible, setIsVisible] = useState(false);
     const [error, setError] = useState(null);
+    const insets = useSafeAreaInsets();
 
     const showSignatureModal = () => {
         setError(null);
@@ -61,7 +63,15 @@ const FormSignature = ({ control, getValues, errors }) => {
                         visible={isVisible}
                         onDismiss={onModalClose}
                     >
-                        <View className="flex-1">
+                        <View
+                            className="flex-1"
+                            style={{
+                                paddingTop: insets.top,
+                                paddingBottom: insets.bottom,
+                                paddingLeft: insets.left,
+                                paddingRight: insets.right,
+                            }}
+                        >
                             <View className="h-12 bg-slate-300 items-center flex-row justify-between">
                                 <Text className="text-2xl font-bold pl-2">
                                     Signature

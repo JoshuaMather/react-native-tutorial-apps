@@ -4,9 +4,11 @@ import { View, Text, Modal, TouchableOpacity } from 'react-native';
 import { Icon, Button } from 'react-native-elements';
 import MultiSelect from 'react-native-multiple-select';
 import Styles from '../../../customStyles';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const FormMultiSelect = ({ control, errors }) => {
     const [isVisible, setIsVisible] = useState(false);
+    const insets = useSafeAreaInsets();
     let multiSelect;
 
     const items = [
@@ -92,7 +94,15 @@ const FormMultiSelect = ({ control, errors }) => {
                         visible={isVisible}
                         onDismiss={closeModal}
                     >
-                        <View className="flex-1">
+                        <View
+                            className="flex-1"
+                            style={{
+                                paddingTop: insets.top,
+                                paddingBottom: insets.bottom,
+                                paddingLeft: insets.left,
+                                paddingRight: insets.right,
+                            }}
+                        >
                             <View className="h-12 bg-slate-300 items-center flex-row justify-between">
                                 <Text className="font-bold text-xl pl-2">
                                     Multi Select
