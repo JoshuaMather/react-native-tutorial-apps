@@ -1,5 +1,6 @@
 import * as MailComposer from 'expo-mail-composer';
 import { Alert } from 'react-native';
+import * as FileSystem from 'expo-file-system';
 
 export default () => {
     const createEmail = async (content) => {
@@ -14,6 +15,25 @@ export default () => {
         }
 
         let attachments = [];
+
+        const fileName =
+            FileSystem.documentDirectory + `test_form_${Date.now()}.json`;
+        await FileSystem.writeAsStringAsync(
+            fileName,
+            JSON.stringify(content)
+        ).catch(() => {
+            Alert.alert(
+                'Error writing data to file.',
+                'Unable to create write form data to file.',
+                [{ text: 'OK', onPress: () => console.log('OK Pressed') }]
+            );
+            return;
+        });
+
+        console.log(fileName);
+        attachments.push(fileName);
+        // return;
+
         if (content.imageUrl) {
             attachments.push(content.imageUrl);
         }
@@ -28,7 +48,7 @@ export default () => {
         console.log(attachments);
 
         await MailComposer.composeAsync({
-            body: JSON.stringify(content),
+            body: 'Test form data included as attachments.',
             recipients: ['jom@gloversure.co.uk'],
             subject: 'Test Form Submitted',
             attachments: attachments,
