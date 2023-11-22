@@ -91,7 +91,7 @@ const schema = Yup.object().shape({
         .trim()
         .oneOf(['Red', 'Green', 'Blue', 'Yellow', 'Purple', 'Orange']),
     checked: Yup.boolean().label('checked').required('Required'),
-    signature: Yup.string().label('signature'),
+    signature: Yup.string().label('signature').required('Required'),
     barcode: Yup.object().shape({
         type: Yup.string().label('type'),
         data: Yup.string().label('data'),

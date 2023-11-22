@@ -13,12 +13,15 @@ import Signature, { SignatureViewRef } from 'react-native-signature-canvas';
 import { Icon } from '@rneui/themed';
 import Styles from '../../../customStyles';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { styled } from 'nativewind';
 
 const FormSignature = ({ control, getValues, errors }) => {
     const sigRef = useRef<SignatureViewRef>();
     const [isVisible, setIsVisible] = useState(false);
     const [error, setError] = useState(null);
     const insets = useSafeAreaInsets();
+
+    const StyledText = styled(Text);
 
     const showSignatureModal = () => {
         setError(null);
@@ -32,14 +35,14 @@ const FormSignature = ({ control, getValues, errors }) => {
     return (
         <Controller
             control={control}
-            // rules={{ required: true }}
+            rules={{ required: true }}
             render={({ field: { onChange, onBlur, value } }) => (
                 <View>
                     <Text className="font-bold text-xl pb-2">
                         Signature
-                        <Text className={`${Styles.red} font-extrabold`}>
+                        <StyledText className={`${Styles.red} font-extrabold`}>
                             *
-                        </Text>
+                        </StyledText>
                     </Text>
                     {getValues('signature') && (
                         <Image
@@ -93,7 +96,7 @@ const FormSignature = ({ control, getValues, errors }) => {
                                 ref={sigRef}
                                 webStyle={style}
                                 onEmpty={() => {
-                                    // setError('Signature must not be empty')
+                                    setError('Signature must not be empty');
                                     onChange(undefined);
                                     onModalClose();
                                 }}
