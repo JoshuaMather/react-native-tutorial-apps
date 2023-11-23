@@ -18,6 +18,7 @@ export default () => {
 
         const fileName =
             FileSystem.documentDirectory + `test_form_${Date.now()}.json`;
+
         await FileSystem.writeAsStringAsync(
             fileName,
             JSON.stringify(content)
@@ -53,6 +54,8 @@ export default () => {
             subject: 'Test Form Submitted',
             attachments: attachments,
         });
+
+        await FileSystem.deleteAsync(fileName);
     };
 
     return { createEmail };
