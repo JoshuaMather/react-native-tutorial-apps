@@ -14,6 +14,13 @@ export default () => {
             return;
         }
 
+        // FileSystem.readDirectoryAsync(FileSystem.documentDirectory).then(
+        //     (res) => {
+        //         console.log(res.length);
+        //         console.log(res);
+        //     }
+        // );
+
         let attachments = [];
 
         const fileName =
@@ -56,6 +63,12 @@ export default () => {
         });
 
         await FileSystem.deleteAsync(fileName);
+        // FileSystem.readDirectoryAsync(
+        //     FileSystem.documentDirectory
+        // ).then((res) => {
+        //     console.log(res.length);
+        //     console.log(res);
+        // });
     };
 
     return { createEmail };
