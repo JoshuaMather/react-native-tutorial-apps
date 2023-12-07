@@ -73,6 +73,12 @@ const AccountScreen = ({ navigation }) => {
                 />
             </Spacer>
             <Spacer>
+                <Button
+                    title="Video"
+                    onPress={() => navigation.navigate('Video')}
+                />
+            </Spacer>
+            <Spacer>
                 <Button title="Sign Out" onPress={() => dispatch(signout())} />
             </Spacer>
         </View>

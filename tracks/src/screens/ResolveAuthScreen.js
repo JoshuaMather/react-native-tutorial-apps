@@ -15,6 +15,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import NetworkBanner from '../components/NetworkBanner';
 import { useDispatch, useSelector } from 'react-redux';
 import { tryLocalSignIn } from '../store/slices/authSlice';
+import VideoScreen from './VideoScreen';
 
 const Tab = createBottomTabNavigator();
 const AuthStack = createStackNavigator();
@@ -67,6 +68,7 @@ const ResolveAuthScreen = () => {
                     component={TestFormScreen}
                     // options={{ animationEnabled: false }}
                 />
+                <AccountStack.Screen name="Video" component={VideoScreen} />
             </AccountStack.Navigator>
         );
     };
