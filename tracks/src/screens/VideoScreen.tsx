@@ -9,17 +9,26 @@ import {
 import { Video, ResizeMode } from 'expo-av';
 import VideoPlayer from 'expo-video-player';
 import Spacer from '../components/Spacer';
+import * as WebBrowser from 'expo-web-browser';
 
 const VideoScreen = () => {
     const video = useRef(null);
     const [playing, setPlaying] = useState(false);
     const video2 = useRef(null);
     const [playing2, setPlaying2] = useState(false);
+    const [result, setResult] = useState(null);
+
+    const _handlePressButtonAsync = async () => {
+        let result = await WebBrowser.openBrowserAsync('https://youtube.com');
+        setResult(result);
+    };
 
     return (
         <View>
             <Text className="text-center text-4xl pt-5 font-bold">Video</Text>
             {/* <ScrollView> */}
+            <Button title="Open YouTube" onPress={_handlePressButtonAsync} />
+            <Text>{result && JSON.stringify(result)}</Text>
             <View className="items-center">
                 <Text className="text-center text-2xl pt-5">Video #1</Text>
                 <Video
